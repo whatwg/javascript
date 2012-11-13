@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>JavaScript, aka. Web ECMAScript</title>
+<meta name=viewport content="width=device-width">
+<link href=http://www.whatwg.org/style/specification rel=stylesheet>
+<style>
+	html { background: #fff; -o-tab-size: 2; -moz-tab-size: 2; tab-size: 2; }
+	body { margin: 0 auto; padding: 0; max-width: 60em; border: 0; }
+	pre, code, a { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+	.status { border: 1px solid green; padding: 1em; background: #90ee85; }
+	p a[href^=http]::after { content: '\21D7'; color: #777; display: inline-block; }
+	@media (max-width: 60em) {
+		body { padding: 0 .625em; }
+		.toc { padding-left: 0; }
+	}
+	@media (max-width: 30em) {
+		.toc ol, dd { padding-left: 1.5em; }
+		dd { margin-left: 0; }
+	}
+</style>
+<link rel=icon href=http://resources.whatwg.org/logo-javascript.svg>
+<meta name=description content="This specification aims to document the differences between the ECMAScript spec and the compatibility requirements for JavaScript implementations.">
+<div class="head">
+	<p><a class="logo" href="//www.whatwg.org/"><img alt="WHATWG" src="http://resources.whatwg.org/logo-javascript.svg" width="100" height="100"></a></p>
+	<h1>JavaScript, <abbr title="also known as">aka.</abbr> Web ECMAScript</h1>
+	<h2 class="no-num no-toc">Living Standard &mdash; [DATE: 01 Jan 1970]</h2>
+	<dl>
+		<dt>This Version:
+			<dd><a href=http://javascript.spec.whatwg.org/>http://javascript.spec.whatwg.org/</a>
+		<dt>Participate:</dt>
+			<dd><a href=https://github.com/whatwg/javascript/issues/new>File a bug</a> (but check <a href="https://github.com/whatwg/javascript/issues?state=open">the list of open bugs</a> first)
+			<dd><a href=http://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a>
+		<dt>Version History:
+			<dd><a href=https://github.com/whatwg/javascript>https://github.com/whatwg/javascript</a>
+		<dt>Editor:
+			<dd><a href=http://mathiasbynens.be/>Mathias Bynens</a>
+	</dl>
+</div>
+<hr class="top">
+
+<h2 class="no-num no-toc">Table of Contents</h2>
+<!--toc-->
+
+<h2>Goals</h2>
+
+<p>This specification aims to document the differences between the ECMAScript specification and the compatibility and interoperability requirements for ECMAScript implementations in web browsers. <span data-anolis-ref>ECMASCRIPT</span>
+<!-- TODO: explain that it only includes stuff that isn’t covered by other specs like [HTML] or [DOM] -->
+
+<!-- TODO: Annex B -->
+<!-- octal escapes in regular expressions
+/\123/.test('S'); // true
+-->
+
+<h2>Conformance</h2>
+
+<p>Everything in this specification is normative except for examples, notes, and sections marked as non-normative.
+
+<p>A JavaScript implementation must be a conforming implementation of ECMAScript with the extensions described in this document. <span data-anolis-ref>ECMASCRIPT</span>
+
+<p>A user agent must also be a conforming implementation of HTML, if applicable. <span data-anolis-ref>HTML</span>
+<!-- This means we defer to HTML instead of explaining the global `this` in HTML. `this === windows` is always `true`, but `window` and `this` don't always refer to the ES global object (instead they can both refer to the `WindowProxy`). They refer to different things during navigation. -->
+
+<!--
+	<span data-anolis-ref>ECMASCRIPT</span>
+	<span data-anolis-ref>HTML</span>
+-->
+
+<h2>Terminology</h2>
+
+<p>The key words “must” and “should” in this document are to be interpreted as described in RFC 2119. <span data-anolis-ref>RFC2119</span>
+
+<p>Special symbols in this document are identified using their Unicode code points and names. <span data-anolis-ref>UNICODE</span>
+
+<p>When this specification uses the term <dfn>ECMAScript character</dfn>, it means a 16-bit unsigned value used to represent a single 16-bit unit of text. <span data-anolis-ref>ECMASCRIPT</span>
+
+<h2>Abstract operations</h2>
+
+<p>To clarify the semantics of certain constructs used throughout this document, it is useful to define a set of abstract operations. These abstract operations are not a part of the language, and must not be exposed to Web authors; they are only defined here to aid the specification of the semantics of the language.
+
+<h3 id=min><code>min(<var>a</var>, <var>b</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>min</dfn>(<var>a</var>, <var>b</var>)</code> returns the smallest of its two arguments, as per the following algorithm:
+
+<ol>
+	<li>If <var>a</var> is smaller than <var>b</var>, return <var>a</var>; else return <var>b</var>.
+</ol>
+
+<h3 id=max><code>max(<var>a</var>, <var>b</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>max</dfn>(<var>a</var>, <var>b</var>)</code> returns the greatest of its two arguments, as per the following algorithm:
+
+<ol>
+	<li>If <var>a</var> is greater than <var>b</var>, return <var>a</var>; else return <var>b</var>.
+</ol>
+
+<h3 id=checkobjectcoercible><code>CheckObjectCoercible(<var>value</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <span data-anolis-spec=ecmascript title=CheckObjectCoercible()>It is defined in the ECMAScript specification.</span>
+
+<h3 id=escapeattributevalue><code>EscapeAttributeValue(<var>value</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>EscapeAttributeValue</dfn>(<var>value</var>)</code> produces a string suitable for use in an HTML attribute value wrapped in double quotes. <span data-anolis-ref>HTML</span> This is done according to the following algorithm:
+
+<!--
+Firefox, Opera and IE don’t escape the quotation marks at all, which is a potential security issue: http://krijnhoetmer.nl/irc-logs/whatwg/20120620#l-567
+Opera/Carakan: https://bugs.opera.com/browse/CORE-47348 (DSK-369206/CORE-47348)
+Firefox/Spidermonkey: https://bugzilla.mozilla.org/show_bug.cgi?id=352437
+Safari/JavaScriptCore:
+- https://bugs.webkit.org/show_bug.cgi?id=90667 (escape U+0022 QUOTATION MARK)
+- https://bugs.webkit.org/show_bug.cgi?id=64677 (CheckObjectCoercible)
+IE/Chakra:
+- https://connect.microsoft.com/IE/feedback/details/752283 (lowercase tagnames)
+- https://connect.microsoft.com/IE/feedback/details/752391 (escape U+0022 QUOTATION MARK)
+- https://connect.microsoft.com/IE/feedback/details/752807 (CheckObjectCoercible)
+Chrome/V8:
+- http://code.google.com/p/v8/issues/detail?id=2217 (don’t escape U+0027 APOSTROPHE and < and > characters as well)
+- http://code.google.com/p/v8/issues/detail?id=2218 (CheckObjectCoercible)
+ES spec bugs:
+- https://bugs.ecmascript.org/show_bug.cgi?id=462 (CheckObjectCoercible)
+- https://bugs.ecmascript.org/show_bug.cgi?id=463 (escape U+0022 QUOTATION MARK)
+Note that U+0026 AMPERSAND must not be escaped — that would break sites that do the right thing and escape U+0022 QUOTATION MARK as &quot; and U+0026 AMPERSAND as &amp; before passing it to these methods.
+-->
+
+<ol>
+	<li>Let <var>escaped</var> be <var>value</var> with each U+0022 QUOTATION MARK character replaced with the string “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B).
+	<li>Return <var>escaped</var>.
+</ol>
+
+<p class=warning>For security reasons, Web authors should not rely on any such escaping, as older, non-JavaScript-compliant implementations might not perform this operation correctly.
+
+<h3 id=iscallable><code>IsCallable(<var>value</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <span data-anolis-spec=ecmascript title=IsCallable()>It is defined in the ECMAScript specification.</span>
+
+<h3 id=tointeger><code>ToInteger(<var>value</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>ToInteger</dfn>(<var>value</var>)</code> converts its argument to an integral numeric value (of type <code>Number</code>). <span data-anolis-spec=ecmascript title=ToInteger()>It is defined in the ECMAScript specification.</span>
+
+<h3 id=tostring><code>ToString(<var>value</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <span data-anolis-spec=ecmascript title=ToString()>It is defined in the ECMAScript specification.</span>
+
+<h3 id=tohtml><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
+
+<p>The abstract operation <code><dfn>ToHTML</dfn>(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code> produces an HTML string, according to the following algorithm:
+
+<ol>
+	<li>If <var>attributeName</var> is undefined, return the concatenation of the strings “<code>&lt;</code>” (U+003C), <var>tagName</var>, “<code>></code>” (U+003E), <var>content</var>, “<code>&lt;/</code>” (U+003C U+002F), <var>tagName</var>, and “<code>></code>” (U+003E).
+	<li>Otherwise, return the concatenation of the strings “<code>&lt;</code>” (U+003C), <var>tagName</var>, “<code> </code>” (U+0020), <var>attributeName</var>, “<code>="</code>” (U+003D U+0022), <code title=EscapeAttributeValue>EscapeAttributeValue(<var>attributeValue</var>)</code>, “<code>"></code>” (U+0022 U+003E), <var>content</var>, “<code>&lt;/</code>” (U+003C U+002F), <var>tagName</var>, and “<code>></code>” (U+003E).
+</ol>
+
+<h2>Annex B</h2>
+
+<p>JavaScript implementations must fully implement <span data-anolis-spec=ecmascript title="Annex B">Annex B of the ECMAScript specification</span>. This includes:
+
+<ul>
+	<li>additional non-strict mode syntax and semantics for octal literals in numeric literals and octal escape sequences in string literals;
+	<li>the global <code>escape(<var>string</var>)</code> and <code>unescape(<var>string</var>)</code> methods;
+	<li>the <code>String.prototype.substr(<var>start</var>, <var>length</var>)</code> method;
+	<li>the <code>Date.prototype.getYear()</code>, <code>Date.prototype.setYear(<var>year</var>)</code>, and <code>Date.prototype.toGMTString()</code> methods.
+</ul>
+
+<h2>Unicode database version</h2>
+
+<p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <span title="ECMAScript character">ECMAScript characters</span> are allowed in <span data-anolis-spec=ecmascript title=Identifier><code>Identifier</code>s</span> and <span data-anolis-spec=ecmascript title=IdentifierName><code>IdentifierName</code>s</span>, and which <span title="ECMAScript character">ECMAScript characters</span> are <span data-anolis-spec=ecmascript title=Whitespace>whitespace characters</span>. <span data-anolis-ref>UNICODE</span>
+
+<h2>Syntax</h2>
+
+<h3>Comment syntax</h3>
+
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/comment-syntax/>http://mathias.html5.org/tests/javascript/comment-syntax/</a>.
+<!-- Opera bug: DSK-369203 -->
+
+<p><code>&lt;!--</code> must be treated as the start of a <code data-anolis-spec=ecmascript>SingleLineComment</code> — equivalent to <code>//</code>.
+
+<pre class=example>var x = true;
+&lt;!-- x = false; // note: no syntax error
+x; // true</pre>
+
+<p><code>--></code> at the start of a line, optionally preceded by <span data-anolis-spec=ecmascript>whitespace</span> or single-line <span data-anolis-spec=ecmascript title=MultiLineComment><code>MultiLineComment</code>s</span>, must be treated as a <code data-anolis-spec=ecmascript>SingleLineComment</code> — equivalent to <code>//</code>.
+
+<pre class=example>var x = true;
+--> x = false; // note: no syntax error
+x; // true</pre>
+
+<!--
+<h2>Identifiers</h2>
+
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/identifiers/>http://mathias.html5.org/tests/javascript/identifiers/</a>.
+
+Opera/Carakan: https://bugs.opera.com/browse/CORE-47441 (DSK-369398)
+Chrome/V8: http://code.google.com/p/v8/issues/detail?id=2222
+Safari/JavaScriptCore: https://bugs.webkit.org/show_bug.cgi?id=90678
+Firefox (discussion): https://bugzilla.mozilla.org/show_bug.cgi?id=744784
+Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
+-->
+<!--
+<h3>Escaped reserved words</h3>
+
+<p class=note>This doesn’t seem to be a strong compatibility requirement, as Firefox and IE don’t have this functionality (anymore). Hopefully, it can be removed from all engines. In that case, it will be removed from this document, as well.
+
+<p>JavaScript implementations must support <span data-anolis-spec=ecmascript title=Identifier>ECMAScript identifiers</span> that unescape to a reserved word, as long as at least one character is escaped using a <span data-anolis-spec=ecmascript>Unicode escape sequence</span>.
+
+<p class=example>For example, <code>var var;</code> throws a syntax error, but e.g. <code>var v\u0061r;</code> works fine.
+
+<p>Subsequent use of such identifiers must also have at least one character escaped (otherwise the reserved word will be used instead), but it doesn’t have to be the same character(s) that were originally used to create the identifier.
+
+<p class=example>For example, <code>var v\u0061r = 42; alert(va\u0072);</code> alerts <code>42</code>.
+-->
+
+<h2>Top-level <code>var</code> statements</h2>
+
+<!-- TODO -->
+<p>The erratum in <a href="https://bugs.ecmascript.org/show_bug.cgi?id=78#c0">https://bugs.ecmascript.org/show_bug.cgi?id=78#c0</a> must be followed so that <code>var</code> statements at the top level of scripts can shadow any properties from the global object’s prototype chain.
+
+<h2><code>Array</code></h2>
+
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/array/>http://mathias.html5.org/tests/javascript/array/</a>.
+
+<h3 id=array.prototype.splice><code>Array.prototype.splice(<var>start</var>, <var>deleteCount</var>, <var>item1</var>, <var>item2</var>, <var>…</var>)</code></h3>
+
+<p><span data-anolis-spec=ecmascript title=Array.prototype.splice()>This method is defined in the ECMAScript specification.</span> However, for Web compatibility, JavaScript implementations must perform the following additional step before continuing with the algorithm:
+
+<ol>
+	<li>If the <var>start</var> argument is provided and the <var>deleteCount</var> argument is omitted (i.e. when <code>arguments.length == 1</code>), set the value of <var>deleteCount</var> to <code>Infinity</code>.
+</ol>
+
+<p class=note>According to the algorithm in the ECMAScript spec, omitting the <var>deleteCount</var> argument or setting its value to <code>undefined</code> would have the same effect as passing the value <code>0</code> (rather than <code>Infinity</code>), regardless of whether the <var>start</var> argument is provided or not.
+
+<pre class=example>var array = ['a', 'b', 'c', 'd'];
+array.splice(2); // ['c', 'd']
+array; // ['a', 'b']
+
+array = ['a', 'b', 'c', 'd'];
+array.splice(2, Infinity); // ['c', 'd']
+array; // ['a', 'b']
+
+array = ['a', 'b', 'c', 'd'];
+array.splice(2, undefined); // []
+array; // ['a', 'b', 'c', 'd']</pre>
+
+<h2><code>String</code></h2>
+
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/string/>http://mathias.html5.org/tests/javascript/string/</a>.
+
+<p><a href="http://ecma-international.org/ecma-262/5.1/#sec-15.5.4">Section 15.5.4 of the ECMAScript 5.1 specification</a> defines the properties of the <code>String.prototype</code> object. For Web compatibility, user agents must extend this object with the following extra methods.
+
+<p>These methods are all generic, meaning the <code>this</code> argument need not be a <code>String</code> object.
+
+<h3 id=string.prototype.anchor><code>String.prototype.anchor(<var>name</var>)</code></h3>
+
+<!-- WebKit & IE don’t perform the CheckObjectCoercible step. -->
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Let <var>attributeValue</var> be <code title=ToString>ToString(<var>name</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("a", <var>content</var>, "name", <var>attributeValue</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>anchor</code> method is <code>1</code>.
+
+<p class=warning>The use of this method is not recommended for Web authors; DOM APIs should be used instead. <span data-anolis-ref>DOM</span> <span data-anolis-ref>HTML</span> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>&quot;</code> in the value of the <var>name</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
+
+<h3 id=string.prototype.big><code>String.prototype.big()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("big", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>big</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.blink><code>String.prototype.blink()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("blink", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>blink</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.bold><code>String.prototype.bold()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("b", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>bold</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.fixed><code>String.prototype.fixed()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("tt", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>fixed</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.fontcolor><code>String.prototype.fontcolor(<var>color</var>)</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Let <var>attributeValue</var> be <code title=ToString>ToString(<var>color</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("font", <var>content</var>, "color", <var>attributeValue</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>fontcolor</code> method is <code>1</code>.</p>
+
+<p class=warning>The use of this method is not recommended for Web authors; DOM APIs should be used instead. <span data-anolis-ref>DOM</span> <span data-anolis-ref>HTML</span> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>&quot;</code> in the value of the <var>color</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
+
+<h3 id=string.prototype.fontsize><code>String.prototype.fontsize(<var>size</var>)</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Let <var>attributeValue</var> be <code title=ToString>ToString(<var>size</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("font", <var>content</var>, "size", <var>attributeValue</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>fontsize</code> method is <code>1</code>.</p>
+
+<p class=warning>The use of this method is not recommended for Web authors; DOM APIs should be used instead. <span data-anolis-ref>DOM</span> <span data-anolis-ref>HTML</span> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>&quot;</code> in the value of the <var>size</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
+
+<h3 id=string.prototype.italics><code>String.prototype.italics()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("i", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>italics</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.link><code>String.prototype.link(<var>href</var>)</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Let <var>attributeValue</var> be <code title=ToString>ToString(<var>href</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("a", <var>content</var>, "href", <var>attributeValue</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>link</code> method is <code>1</code>.</p>
+
+<p class=warning>The use of this method is not recommended for Web authors; DOM APIs should be used instead. <span data-anolis-ref>DOM</span> <span data-anolis-ref>HTML</span> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>&quot;</code> in the value of the <var>href</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
+
+<h3 id=string.prototype.small><code>String.prototype.small()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("small", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>small</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.strike><code>String.prototype.strike()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("strike", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>strike</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.sub><code>String.prototype.sub()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("sub", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>sub</code> method is <code>0</code>.</p>
+
+<h3 id=string.prototype.substr><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
+
+<span data-anolis-spec=ecmascript title=String.prototype.substr()>This method is defined in Annex B.2.3 of the ECMAScript specification.</span> Although this section is non-normative, user agents must implement it for Web compatibility.
+
+<!--
+<ol>
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Let <var>totalLength</var> be the number of <span data-anolis-spec=ecmascript>ECMAScript characters</span> in <var>content</var>.
+	<li>Let <var>intStart</var> be <code title=ToInteger>ToInteger(<var>start</var>)</code>.
+	<li>If <var>length</var> is undefined, let <var>intEnd</var> be <var>totalLength</var>; else let <var>intEnd</var> be <code><var>intStart</var> + <span title=ToInteger>ToInteger</span>(<var>totalLength</var>)</code>.
+	<li>If <var>intStart</var> is negative, let <var>from</var> be <code title=max>max(<var>totalLength</var> + <var>intStart</var>, 0)</code>; else let <var>from</var> be <code title=min>min(<var>intStart</var>, <var>totalLength</var>)</code>.
+	<li>If <var>intEnd</var> is negative, let <var>to</var> be <code title=max>max(<var>totalLength</var> + <var>intEnd</var>, 0)</code>; else let <var>to</var> be <code title=min>min(<var>intEnd</var>, <var>totalLength</var>)</code>.
+	<li>Let <var>span</var> be <code title=max>max(<var>to</var> &minus; <var>from</var>, 0)</code>.
+	<li>Return a string containing <var>span</var> consecutive characters from <var>content</var> beginning with the character at position <var>from</var>.
+</ol>
+
+<p>The <code>length</code> property of the <code>substr</code> method is <code>2</code>.</p>
+-->
+
+<h3 id=string.prototype.sup><code>String.prototype.sup()</code></h3>
+
+<ol>
+	<li>Call <code title=CheckObjectCoercible>CheckObjectCoercible(<var>this</var>)</code>.
+	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
+	<li>Return <code title=ToHTML>ToHTML("sup", <var>content</var>)</code>.
+</ol>
+
+<p>The <code>length</code> property of the <code>sup</code> method is <code>0</code>.</p>
+
+<h2><code>Date</code></h2>
+
+<h3 id=date.utc><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
+
+<p>When called with fewer than two arguments, <code data-anolis-spec=ecmascript>Date.UTC</code> must return <code>NaN</code>.
+
+<h2><code>RegExp</code></h2>
+<!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
+
+<h3>Decimal escapes in character class ranges</h3>
+
+<p>Any <span data-anolis-spec=ecmascript title=DecimalEscape><code>DecimalEscape</code>s</span> in <span data-anolis-spec=ecmascript title="Character class ranges">character class ranges</span> must behave like <code>\0</code> rather than throwing syntax errors.
+
+<p class=example>For example, <code>/[\1-Z]/</code> matches any character with a code point between <code>U+0000</code> and <code>U+005A</code>.
+<!-- TODO: [ /[\1-\1]/.test('\0'), /[\0-\0]/.test('\0') ] == [ false, true ] -- >
+<!-- TODO: more info -->
+
+<h3>Octal escapes in regular expression literals</h3>
+
+<p>The <span data-anolis-spec=ecmascript title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</span> must be supported, and must also apply to regular expression literals, even in strict mode code.
+
+<pre class=example>/\123/.test('S'); // true</pre>
+
+<h3 id=regexp.$n><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
+
+<p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
+
+<h3 id=regexp.lastmatch><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
+
+<!-- TODO:
+https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
+http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
+-->
+
+<h3 id=regexp.prototype.compile><code>RegExp.prototype.compile()</code></h3>
+
+<p>The <code>length</code> property of the <code>compile</code> method is <code>1</code>.</p>
+<!-- Mutates a regex in place, e.g.
+var r = /./, fn = function (m, r) {r.compile('..'); console.log(m);}, s = 'str'; fn(r.exec(s), r); fn(r.exec(s), r);
+http://twitter.com/slevithan/status/219880359263875072
+In Carakan/Nitro/V8 the method returns `undefined`; in SpiderMonkey it returns the regexp object.
+-->
+
+<h2><code>Function</code></h2>
+
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/function/>http://mathias.html5.org/tests/javascript/function/</a>.
+
+<h3><code>Function.prototype.arguments</code></h3>
+
+<!-- TODO: mutable or not? http://jon-carlos.com/projects/wtf/ -->
+
+<p>Each <code>Function</code> instance must have an <code>arguments</code> property that is equivalent to <span data-anolis-spec=ecmascript title="The arguments object">the standard <code>arguments</code> object</span> within that function.
+
+<pre class=example>var a = function(x, y, z) {
+	return [a.arguments, a.arguments === arguments];
+};
+a(1, 2, 3); // [{ '0': 1, '1': 2, '2': 3, 'length': 3 }], true]</pre>
+
+<p>The value of a function’s <code>arguments</code> property must be <code>null</code> if it’s accessed outside the function’s inner scope.
+
+<pre class=example>var a = function(x, y, z) {
+	return a.arguments;
+};
+a(1, 2, 3); // { '0': 1, '1': 2, '2': 3, 'length': 3 }
+a.arguments; // null</pre>
+
+<p>The standard <code>arguments</code> object is not created if the identifier “<code>arguments</code>” occurs as an <code data-anolis-spec=ecmascript>Identifier</code> in the function’s <code data-anolis-spec=ecmascript>FormalParameterList</code> or occurs as an <code data-anolis-spec=ecmascript>Identifier</code> of a <code data-anolis-spec=ecmascript>FunctionDeclaration</code> contained in the function code. However, even in these cases, the <code>arguments</code> property must be added to the function’s prototype.
+
+<pre class=example>var b = function(x, y, arguments) {
+	return [b.arguments, b.arguments === arguments];
+};
+b(1, 2, 3); // [{ '0': 1, '1': 2, '2': 3, 'length': 3 }, false]</pre>
+
+<p>Strict mode functions must have a non-configurable accessor property with the name <code>arguments</code> that throws a <code>TypeError</code> exception on access.
+
+<pre class=example>var a = function(x, y, z) {
+	'use strict';
+	return a.arguments;
+};
+a(1, 2, 3); // throws a TypeError</pre>
+
+<h3><code>Function.prototype.caller</code></h3>
+
+<p>Each <code>Function</code> instance must have a <code>caller</code> property that is a reference to the function that invoked the specified function.
+
+<pre class=example>var a = function() {
+	return a.caller;
+};
+var b = function() {
+	return a() === b;
+};
+b(); // true</pre>
+
+<p>The value of a function’s <code>caller</code> property must be <code>null</code> if it’s accessed outside the function’s inner scope, or if the function was invoked by top-level code.
+
+<pre class=example>var a = function() {
+	return a.caller;
+};
+a.caller; // null
+a(); // null</pre>
+
+<p>Strict mode functions must have a non-configurable accessor property with the name <code>caller</code> that throws a <code>TypeError</code> exception on access.
+
+<pre class=example>var fn = function(x, y, z) {
+	'use strict';
+	return fn.caller;
+};
+fn(); // throws a TypeError</pre>
+
+<h3><code>Function.prototype.toString()</code></h3>
+
+TODO
+<!-- http://ecma-international.org/ecma-262/5.1/#sec-15.3.4.2 leaves everything up to the implementation -->
+
+<h2><code>Object</code></h2>
+
+<!--
+https://bugs.webkit.org/show_bug.cgi?id=93873: Object#__define{G,S}etter__ should throw TypeError if IsCallable(function) is false
+https://connect.microsoft.com/IE/feedback/details/757992: Implement Object.prototype.__define{G,S}etter__
+https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.prototype.__proto__
+-->
+
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/object/>http://mathias.html5.org/tests/javascript/object/</a>.
+
+<h3 id=object.prototype.__definegetter__><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+
+<p>Every <code>Object</code> instance must have a <dfn><code>__defineGetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is accessed.
+
+<ol>
+	<li>If <code title=IsCallable>IsCallable(<var>function</var>)</code> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
+	<li>Let <var>obj</var> be <var>this</var></code>.
+	<li>Let <var>prop</var> be <code title=ToString>ToString(<var>propertyName</var>)</code>.
+	<li>Set the internal <code data-anolis-spec=ecmascript>[[Enumerable]]</code> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Whenever a property with the name of <var>prop</var> is accessed on the <var>obj</var> object, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, and return the result.
+	<li>Whenever the <code>__lookupGetter__</code> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <code title=ToString>ToString(<var>arg</var>)</code>, return a reference to <var>function</var>.
+	<li>Return <code>undefined</code>.
+</ol>
+
+<pre class=example>var object = {},
+    counter = 0;
+object.__defineGetter__('foo', function() {
+	return ++counter;
+});
+[object.foo, object.foo, object.foo]; // [1, 2, 3]</pre>
+
+<pre class=example>var myDate = new Date;
+myDate.__defineGetter__('year', function() {
+	return this.getFullYear();
+});
+myDate; // Sun Jul 01 2012 13:33:37 GMT+0200 (CEST)
+myDate.year; // 2012</pre>
+
+<p>The <code>length</code> property of the <code>__defineGetter__</code> method is <code>2</code>.</p>
+
+<h3 id=object.prototype.__definesetter__><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+
+<p>Every <code>Object</code> instance must have a <dfn><code>__defineSetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is set.
+
+<ol>
+	<li>If <code title=IsCallable>IsCallable(<var>function</var>)</code> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
+	<li>Let <var>obj</var> be <var>this</var></code>.
+	<li>Let <var>prop</var> be <code title=ToString>ToString(<var>propertyName</var>)</code>.
+	<li>Set the internal <code data-anolis-spec=ecmascript>[[Enumerable]]</code> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the <var>prop</var> property on the <var>obj</var> object to <code>undefined</code>.
+	<li>Whenever a property with the name of <var>prop</var> is set to a value <var>val</var> on the <var>obj</var> object, instead of setting the <var>prop</var> property to <var>val</var>, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, passing <var>val</var> as its first argument.
+	<li>Whenever the <code>__lookupSetter__</code> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <code title=ToString>ToString(<var>arg</var>)</code>, return a reference to <var>function</var>.
+	<li>Return <code>undefined</code>.
+</ol>
+
+<pre class=example>var object = {};
+object.__defineSetter__('degrees', function(degrees) {
+	this.radians = degrees * Math.PI / 180;
+});
+object.degrees = 180;
+object.degrees; // undefined
+object.radians; // 3.141592653589793</pre>
+
+<pre class=example>var myDate = new Date;
+myDate.__defineSetter__('year', function(y) {
+	this.setFullYear(y);
+});
+myDate; // Sun Jul 01 2012 13:33:37 GMT+0200 (CEST)
+myDate.year = 1988;
+myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
+
+<p>The <code>length</code> property of the <code>__defineSetter__</code> method is <code>2</code>.</p>
+
+<h3 id=object.prototype.__lookupgetter__><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
+
+<!--
+# [12:49] <jgraham> matjas: __lookupGetter__ and friends probably want to be defined in terms of AccessorDescriptors as per ES5
+# [12:51] <jgraham> Look at e.g. http://es5.github.com/#x8.7.1 for clues
+-->
+
+<p>Every <code>Object</code> instance must have a <dfn><code>__lookupGetter__</code></dfn> method that implements the following algorithm:
+
+<ol>
+	<li>Let <var>prop</var> be <code title=ToString>ToString(<var>propertyName</var>)</code>.
+	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <code>__defineGetter__</code> or <span data-anolis-spec=ecmascript title="Object Initializer">the <code>get</code> syntax in the object initializer</span>, return the getter function; else, return <code>undefined</code>.
+</ol>
+
+<pre class=example>var object = { get foo() { return 1; } };
+object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
+
+<p>The <code>length</code> property of the <code>__lookupGetter__</code> method is <code>1</code>.</p>
+
+<h3 id=object.prototype.__lookupsetter__><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
+
+<p>Every <code>Object</code> instance must have a <dfn><code>__lookupSetter__</code></dfn> method that implements the following algorithm:
+
+<ol>
+	<li>Let <var>prop</var> be <code title=ToString>ToString(<var>propertyName</var>)</code>.
+	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <code>__defineSetter__</code> or <span data-anolis-spec=ecmascript title="Object Initializer">the <code>set</code> syntax in the object initializer</span>, return the setter function; else, return <code>undefined</code>.
+</ol>
+
+<pre class=example>var object = { set foo(value) { this.bar = value * 2; } };
+object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }</pre>
+
+<p>The <code>length</code> property of the <code>__lookupSetter__</code> method is <code>1</code>.</p>
+
+<h3><code>Object.prototype.__proto__</code></h3>
+
+<!--
+TODO: __proto__ will be fully specced in ES6; amend/remove this when that happens.
+http://twitter.com/rwaldron/status/215291884854198274
+-->
+<p>All objects must have a mutable <code>__proto__</code> property that is a reference to the prototype of the object. Note that ECMAScript defines that objects for which the <code>[[Extensible]]</code> internal property is <code>false</code> must not have their prototype mutated.
+<!-- TODO test: ({}).__proto__.__proto__; // null -->
+
+<pre class=example>var string = 'foo';
+string.__proto__ === String.prototype; // true</pre>
+
+<pre class=example>var object = {};
+object.__proto__ === Object.prototype; // true
+object.length; // undefined
+object.__proto__ = Array.prototype;
+object.length; // 0</pre>
+
+<p>In the case that setting an object’s <code>__proto__</code> would cause a prototype chain to become cyclic, the setter must fail and throw an error.
+
+<pre class=example>var object = {};
+object.__proto__ = object; // throws an Error</pre>
+
+<p class=note><code>__proto__</code> will be fully specced in ECMAScript 6 (although the latest draft only defines it in Annex B). This section will be amended / removed when that happens.</p>
+
+<h2 class=no-num>References</h2>
+
+<div id=anolis-references></div>
+
+<h2 class=no-num>Acknowledgments</h2>
+
+<p>Thanks to
+
+Anne van Kesteren,
+Aryeh Gregor,
+David Håsäther,
+James Graham,
+John-David Dalton,
+Ms2ger,
+Simon Pieters,
+Mark ‘Tarquin’ Wilton-Jones,
+and
+Tom Schuster
+
+for their useful comments.
+
+<p>Special thanks to James Graham for collecting and documenting most of these requirements <a href=http://wiki.whatwg.org/wiki/Web_ECMAScript>on the WHATWG Wiki</a>, and Juriy ‘kangax’ Zaytsev (Юрий Зайцев) for his <a href=http://kangax.github.com/es5-compat-table/non-standard/>ECMAScript Extensions Compatibility Table</a>.
