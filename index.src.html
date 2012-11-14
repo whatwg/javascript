@@ -419,14 +419,6 @@ array; // ['a', 'b', 'c', 'd']</pre>
 <h2><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3>Decimal escapes in character class ranges</h3>
-
-<p>Any <span data-anolis-spec=ecmascript title=DecimalEscape><code>DecimalEscape</code>s</span> in <span data-anolis-spec=ecmascript title="Character class ranges">character class ranges</span> must behave like <code>\0</code> rather than throwing syntax errors.
-
-<p class=example>For example, <code>/[\1-Z]/</code> matches any character with a code point between <code>U+0000</code> and <code>U+005A</code>.
-<!-- TODO: [ /[\1-\1]/.test('\0'), /[\0-\0]/.test('\0') ] == [ false, true ] -- >
-<!-- TODO: more info -->
-
 <h3>Octal escapes in regular expression literals</h3>
 
 <p>The <span data-anolis-spec=ecmascript title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</span> must be supported, and must also apply to regular expression literals, even in strict mode code.
@@ -670,6 +662,7 @@ James Graham,
 John-David Dalton,
 Ms2ger,
 Simon Pieters,
+Steven Levithan,
 Mark ‘Tarquin’ Wilton-Jones,
 and
 Tom Schuster

@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="//www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">aka.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-13-november-2012">Living Standard — 13 November 2012</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-14-november-2012">Living Standard — 14 November 2012</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="http://javascript.spec.whatwg.org/">http://javascript.spec.whatwg.org/</a>
@@ -84,11 +84,10 @@
    <li><a href="#date.utc"><span class="secno">11.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
  <li><a href="#regexp"><span class="secno">12 </span><code>RegExp</code></a>
   <ol>
-   <li><a href="#decimal-escapes-in-character-class-ranges"><span class="secno">12.1 </span>Decimal escapes in character class ranges</a></li>
-   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">12.2 </span>Octal escapes in regular expression literals</a></li>
-   <li><a href="#regexp.$n"><span class="secno">12.3 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
-   <li><a href="#regexp.lastmatch"><span class="secno">12.4 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></li>
-   <li><a href="#regexp.prototype.compile"><span class="secno">12.5 </span><code>RegExp.prototype.compile()</code></a></ol></li>
+   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">12.1 </span>Octal escapes in regular expression literals</a></li>
+   <li><a href="#regexp.$n"><span class="secno">12.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
+   <li><a href="#regexp.lastmatch"><span class="secno">12.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></li>
+   <li><a href="#regexp.prototype.compile"><span class="secno">12.4 </span><code>RegExp.prototype.compile()</code></a></ol></li>
  <li><a href="#function"><span class="secno">13 </span><code>Function</code></a>
   <ol>
    <li><a href="#function.prototype.arguments"><span class="secno">13.1 </span><code>Function.prototype.arguments</code></a></li>
@@ -483,32 +482,24 @@ array; // ['a', 'b', 'c', 'd']</pre>
 <h2 id="regexp"><span class="secno">12 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3 id="decimal-escapes-in-character-class-ranges"><span class="secno">12.1 </span>Decimal escapes in character class ranges</h3>
-
-<p>Any <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-15.10.1" title="DecimalEscape"><code>DecimalEscape</code>s</a> in <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-15.10.1" title="Character class ranges">character class ranges</a> must behave like <code>\0</code> rather than throwing syntax errors.
-
-<p class="example">For example, <code>/[\1-Z]/</code> matches any character with a code point between <code>U+0000</code> and <code>U+005A</code>.
-<!-- TODO: [ /[\1-\1]/.test('\0'), /[\0-\0]/.test('\0') ] == [ false, true ] -- >
-<!-- TODO: more info -->
-
-<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">12.2 </span>Octal escapes in regular expression literals</h3>
+<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">12.1 </span>Octal escapes in regular expression literals</h3>
 
 <p>The <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-B.1.2" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
 
 <pre class="example">/\123/.test('S'); // true</pre>
 
-<h3 id="regexp.$n"><span class="secno">12.3 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
+<h3 id="regexp.$n"><span class="secno">12.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
 
 <p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
 
-<h3 id="regexp.lastmatch"><span class="secno">12.4 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
+<h3 id="regexp.lastmatch"><span class="secno">12.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
 
 <!-- TODO:
 https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
 http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 -->
 
-<h3 id="regexp.prototype.compile"><span class="secno">12.5 </span><code>RegExp.prototype.compile()</code></h3>
+<h3 id="regexp.prototype.compile"><span class="secno">12.4 </span><code>RegExp.prototype.compile()</code></h3>
 
 <p>The <code>length</code> property of the <code>compile</code> method is <code>1</code>.</p>
 <!-- Mutates a regex in place, e.g.
@@ -749,6 +740,7 @@ James Graham,
 John-David Dalton,
 Ms2ger,
 Simon Pieters,
+Steven Levithan,
 Mark ‘Tarquin’ Wilton-Jones,
 and
 Tom Schuster
