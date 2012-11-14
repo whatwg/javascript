@@ -46,14 +46,11 @@
  <li><a href="#terminology"><span class="secno">3 </span>Terminology</a></li>
  <li><a href="#abstract-operations"><span class="secno">4 </span>Abstract operations</a>
   <ol>
-   <li><a href="#min"><span class="secno">4.1 </span><code>min(<var>a</var>, <var>b</var>)</code></a></li>
-   <li><a href="#max"><span class="secno">4.2 </span><code>max(<var>a</var>, <var>b</var>)</code></a></li>
-   <li><a href="#checkobjectcoercible"><span class="secno">4.3 </span><code>CheckObjectCoercible(<var>value</var>)</code></a></li>
-   <li><a href="#escapeattributevalue"><span class="secno">4.4 </span><code>EscapeAttributeValue(<var>value</var>)</code></a></li>
-   <li><a href="#iscallable"><span class="secno">4.5 </span><code>IsCallable(<var>value</var>)</code></a></li>
-   <li><a href="#tointeger"><span class="secno">4.6 </span><code>ToInteger(<var>value</var>)</code></a></li>
-   <li><a href="#tostring"><span class="secno">4.7 </span><code>ToString(<var>value</var>)</code></a></li>
-   <li><a href="#tohtml"><span class="secno">4.8 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></a></ol></li>
+   <li><a href="#checkobjectcoercible"><span class="secno">4.1 </span><code>CheckObjectCoercible(<var>value</var>)</code></a></li>
+   <li><a href="#escapeattributevalue"><span class="secno">4.2 </span><code>EscapeAttributeValue(<var>value</var>)</code></a></li>
+   <li><a href="#iscallable"><span class="secno">4.3 </span><code>IsCallable(<var>value</var>)</code></a></li>
+   <li><a href="#tostring"><span class="secno">4.4 </span><code>ToString(<var>value</var>)</code></a></li>
+   <li><a href="#tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></a></ol></li>
  <li><a href="#annex-b"><span class="secno">5 </span>Annex B</a></li>
  <li><a href="#unicode-database-version"><span class="secno">6 </span>Unicode database version</a></li>
  <li><a href="#syntax"><span class="secno">7 </span>Syntax</a>
@@ -140,27 +137,11 @@
 
 <p>To clarify the semantics of certain constructs used throughout this document, it is useful to define a set of abstract operations. These abstract operations are not a part of the language, and must not be exposed to Web authors; they are only defined here to aid the specification of the semantics of the language.
 
-<h3 id="min"><span class="secno">4.1 </span><code>min(<var>a</var>, <var>b</var>)</code></h3>
-
-<p>The abstract operation <code><dfn id="min-0">min</dfn>(<var>a</var>, <var>b</var>)</code> returns the smallest of its two arguments, as per the following algorithm:
-
-<ol>
-	<li>If <var>a</var> is smaller than <var>b</var>, return <var>a</var>; else return <var>b</var>.
-</ol>
-
-<h3 id="max"><span class="secno">4.2 </span><code>max(<var>a</var>, <var>b</var>)</code></h3>
-
-<p>The abstract operation <code><dfn id="max-0">max</dfn>(<var>a</var>, <var>b</var>)</code> returns the greatest of its two arguments, as per the following algorithm:
-
-<ol>
-	<li>If <var>a</var> is greater than <var>b</var>, return <var>a</var>; else return <var>b</var>.
-</ol>
-
-<h3 id="checkobjectcoercible"><span class="secno">4.3 </span><code>CheckObjectCoercible(<var>value</var>)</code></h3>
+<h3 id="checkobjectcoercible"><span class="secno">4.1 </span><code>CheckObjectCoercible(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="checkobjectcoercible-0">CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.10" title="CheckObjectCoercible()">It is defined in the ECMAScript specification.</a>
 
-<h3 id="escapeattributevalue"><span class="secno">4.4 </span><code>EscapeAttributeValue(<var>value</var>)</code></h3>
+<h3 id="escapeattributevalue"><span class="secno">4.2 </span><code>EscapeAttributeValue(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="escapeattributevalue-0">EscapeAttributeValue</dfn>(<var>value</var>)</code> produces a string suitable for use in an HTML attribute value wrapped in double quotes. <a href="#refsHTML">[HTML]</a> This is done according to the following algorithm:
 
@@ -191,19 +172,15 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <p class="warning">For security reasons, Web authors should not rely on any such escaping, as older, non-JavaScript-compliant implementations might not perform this operation correctly.
 
-<h3 id="iscallable"><span class="secno">4.5 </span><code>IsCallable(<var>value</var>)</code></h3>
+<h3 id="iscallable"><span class="secno">4.3 </span><code>IsCallable(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.11" title="IsCallable()">It is defined in the ECMAScript specification.</a>
 
-<h3 id="tointeger"><span class="secno">4.6 </span><code>ToInteger(<var>value</var>)</code></h3>
-
-<p>The abstract operation <code><dfn id="tointeger-0">ToInteger</dfn>(<var>value</var>)</code> converts its argument to an integral numeric value (of type <code>Number</code>). <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.4" title="ToInteger()">It is defined in the ECMAScript specification.</a>
-
-<h3 id="tostring"><span class="secno">4.7 </span><code>ToString(<var>value</var>)</code></h3>
+<h3 id="tostring"><span class="secno">4.4 </span><code>ToString(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.8" title="ToString()">It is defined in the ECMAScript specification.</a>
 
-<h3 id="tohtml"><span class="secno">4.8 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
+<h3 id="tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="tohtml-0">ToHTML</dfn>(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code> produces an HTML string, according to the following algorithm:
 
@@ -447,21 +424,6 @@ array; // ['a', 'b', 'c', 'd']</pre>
 <h3 id="string.prototype.substr"><span class="secno">10.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
 
 <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-B.2.3" title="String.prototype.substr()">This method is defined in Annex B.2.3 of the ECMAScript specification.</a> Although this section is non-normative, user agents must implement it for Web compatibility.
-
-<!--
-<ol>
-	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
-	<li>Let <var>totalLength</var> be the number of <span data-anolis-spec=ecmascript>ECMAScript characters</span> in <var>content</var>.
-	<li>Let <var>intStart</var> be <code title=ToInteger>ToInteger(<var>start</var>)</code>.
-	<li>If <var>length</var> is undefined, let <var>intEnd</var> be <var>totalLength</var>; else let <var>intEnd</var> be <code><var>intStart</var> + <span title=ToInteger>ToInteger</span>(<var>totalLength</var>)</code>.
-	<li>If <var>intStart</var> is negative, let <var>from</var> be <code title=max>max(<var>totalLength</var> + <var>intStart</var>, 0)</code>; else let <var>from</var> be <code title=min>min(<var>intStart</var>, <var>totalLength</var>)</code>.
-	<li>If <var>intEnd</var> is negative, let <var>to</var> be <code title=max>max(<var>totalLength</var> + <var>intEnd</var>, 0)</code>; else let <var>to</var> be <code title=min>min(<var>intEnd</var>, <var>totalLength</var>)</code>.
-	<li>Let <var>span</var> be <code title=max>max(<var>to</var> &minus; <var>from</var>, 0)</code>.
-	<li>Return a string containing <var>span</var> consecutive characters from <var>content</var> beginning with the character at position <var>from</var>.
-</ol>
-
-<p>The <code>length</code> property of the <code>substr</code> method is <code>2</code>.</p>
--->
 
 <h3 id="string.prototype.sup"><span class="secno">10.14 </span><code>String.prototype.sup()</code></h3>
 
@@ -740,6 +702,7 @@ James Graham,
 John-David Dalton,
 Ms2ger,
 Simon Pieters,
+Simon Sapin,
 Steven Levithan,
 Mark ‘Tarquin’ Wilton-Jones,
 and

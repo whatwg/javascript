@@ -77,22 +77,6 @@
 
 <p>To clarify the semantics of certain constructs used throughout this document, it is useful to define a set of abstract operations. These abstract operations are not a part of the language, and must not be exposed to Web authors; they are only defined here to aid the specification of the semantics of the language.
 
-<h3 id=min><code>min(<var>a</var>, <var>b</var>)</code></h3>
-
-<p>The abstract operation <code><dfn>min</dfn>(<var>a</var>, <var>b</var>)</code> returns the smallest of its two arguments, as per the following algorithm:
-
-<ol>
-	<li>If <var>a</var> is smaller than <var>b</var>, return <var>a</var>; else return <var>b</var>.
-</ol>
-
-<h3 id=max><code>max(<var>a</var>, <var>b</var>)</code></h3>
-
-<p>The abstract operation <code><dfn>max</dfn>(<var>a</var>, <var>b</var>)</code> returns the greatest of its two arguments, as per the following algorithm:
-
-<ol>
-	<li>If <var>a</var> is greater than <var>b</var>, return <var>a</var>; else return <var>b</var>.
-</ol>
-
 <h3 id=checkobjectcoercible><code>CheckObjectCoercible(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn>CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <span data-anolis-spec=ecmascript title=CheckObjectCoercible()>It is defined in the ECMAScript specification.</span>
@@ -131,10 +115,6 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 <h3 id=iscallable><code>IsCallable(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn>IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <span data-anolis-spec=ecmascript title=IsCallable()>It is defined in the ECMAScript specification.</span>
-
-<h3 id=tointeger><code>ToInteger(<var>value</var>)</code></h3>
-
-<p>The abstract operation <code><dfn>ToInteger</dfn>(<var>value</var>)</code> converts its argument to an integral numeric value (of type <code>Number</code>). <span data-anolis-spec=ecmascript title=ToInteger()>It is defined in the ECMAScript specification.</span>
 
 <h3 id=tostring><code>ToString(<var>value</var>)</code></h3>
 
@@ -384,21 +364,6 @@ array; // ['a', 'b', 'c', 'd']</pre>
 <h3 id=string.prototype.substr><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
 
 <span data-anolis-spec=ecmascript title=String.prototype.substr()>This method is defined in Annex B.2.3 of the ECMAScript specification.</span> Although this section is non-normative, user agents must implement it for Web compatibility.
-
-<!--
-<ol>
-	<li>Let <var>content</var> be <code title=ToString>ToString(<var>this</var>)</code>.
-	<li>Let <var>totalLength</var> be the number of <span data-anolis-spec=ecmascript>ECMAScript characters</span> in <var>content</var>.
-	<li>Let <var>intStart</var> be <code title=ToInteger>ToInteger(<var>start</var>)</code>.
-	<li>If <var>length</var> is undefined, let <var>intEnd</var> be <var>totalLength</var>; else let <var>intEnd</var> be <code><var>intStart</var> + <span title=ToInteger>ToInteger</span>(<var>totalLength</var>)</code>.
-	<li>If <var>intStart</var> is negative, let <var>from</var> be <code title=max>max(<var>totalLength</var> + <var>intStart</var>, 0)</code>; else let <var>from</var> be <code title=min>min(<var>intStart</var>, <var>totalLength</var>)</code>.
-	<li>If <var>intEnd</var> is negative, let <var>to</var> be <code title=max>max(<var>totalLength</var> + <var>intEnd</var>, 0)</code>; else let <var>to</var> be <code title=min>min(<var>intEnd</var>, <var>totalLength</var>)</code>.
-	<li>Let <var>span</var> be <code title=max>max(<var>to</var> &minus; <var>from</var>, 0)</code>.
-	<li>Return a string containing <var>span</var> consecutive characters from <var>content</var> beginning with the character at position <var>from</var>.
-</ol>
-
-<p>The <code>length</code> property of the <code>substr</code> method is <code>2</code>.</p>
--->
 
 <h3 id=string.prototype.sup><code>String.prototype.sup()</code></h3>
 
@@ -662,6 +627,7 @@ James Graham,
 John-David Dalton,
 Ms2ger,
 Simon Pieters,
+Simon Sapin,
 Steven Levithan,
 Mark ‘Tarquin’ Wilton-Jones,
 and
