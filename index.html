@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="//www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">aka.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-7-may-2013">Living Standard — 7 May 2013</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-25-june-2013">Living Standard — 25 June 2013</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="http://javascript.spec.whatwg.org/">http://javascript.spec.whatwg.org/</a>
@@ -220,11 +220,18 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 &lt;!-- x = false; // note: no syntax error
 x; // true</pre>
 
-<p><code>--&gt;</code> at the start of a line, optionally preceded by <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.2">whitespace</a> or single-line <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.4" title="MultiLineComment"><code>MultiLineComment</code>s</a>, must be treated as a <a href="http://ecma-international.org/ecma-262/5.1/#sec-7.4"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
+<p><code>--&gt;</code> at the start of a line, optionally preceded by <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.2">whitespace</a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.4" title="MultiLineComment"><code>MultiLineComment</code>s</a>, must be treated as a <a href="http://ecma-international.org/ecma-262/5.1/#sec-7.4"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
 
 <pre class="example">var x = true;
 --&gt; x = false; // note: no syntax error
 x; // true</pre>
+
+<pre class="example">var x = 1;
+/*
+multiline comment!
+x = 2;
+*/ --&gt; x = 3;
+x; // 1</pre>
 
 <!--
 <h2>Identifiers</h2>

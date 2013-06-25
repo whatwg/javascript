@@ -160,11 +160,18 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 &lt;!-- x = false; // note: no syntax error
 x; // true</pre>
 
-<p><code>--></code> at the start of a line, optionally preceded by <span data-anolis-spec=ecmascript>whitespace</span> or single-line <span data-anolis-spec=ecmascript title=MultiLineComment><code>MultiLineComment</code>s</span>, must be treated as a <code data-anolis-spec=ecmascript>SingleLineComment</code> — equivalent to <code>//</code>.
+<p><code>--></code> at the start of a line, optionally preceded by <span data-anolis-spec=ecmascript>whitespace</span> or <span data-anolis-spec=ecmascript title=MultiLineComment><code>MultiLineComment</code>s</span>, must be treated as a <code data-anolis-spec=ecmascript>SingleLineComment</code> — equivalent to <code>//</code>.
 
 <pre class=example>var x = true;
 --> x = false; // note: no syntax error
 x; // true</pre>
+
+<pre class=example>var x = 1;
+/*
+multiline comment!
+x = 2;
+*/ --> x = 3;
+x; // 1</pre>
 
 <!--
 <h2>Identifiers</h2>
