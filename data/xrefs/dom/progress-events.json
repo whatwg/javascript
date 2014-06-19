@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "concept-event-fire-progress": "concept-event-fire-progress",
+    "dom-progressevent": "dom-progressevent",
+    "dom-progressevent-lengthcomputable": "dom-progressevent-lengthcomputable",
+    "dom-progressevent-loaded": "dom-progressevent-loaded",
+    "dom-progressevent-total": "dom-progressevent-total",
+    "progressevent": "progressevent",
+    "progresseventinit": "progresseventinit"
+  },
+  "url": "http://dev.w3.org/2006/webapi/progress/#"
+}

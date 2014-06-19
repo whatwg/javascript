@@ -1,0 +1,24 @@
+{
+  "definitions": {
+    "concept-parse-fragment": "concept-parse-fragment",
+    "concept-serialize": "concept-serialize",
+    "concept-serialize-html": "concept-serialize-html",
+    "concept-serialize-xml": "concept-serialize-xml",
+    "context object": "context-object",
+    "dom-domparser": "dom-domparser",
+    "dom-domparser-parsefromstring": "dom-domparser-parsefromstring",
+    "dom-element-innerhtml": "dom-element-innerhtml",
+    "dom-element-insertadjacenthtml": "dom-element-insertadjacenthtml",
+    "dom-element-outerhtml": "dom-element-outerhtml",
+    "dom-range-createcontextualfragment": "dom-range-createcontextualfragment",
+    "dom-text-serializeascdata": "dom-text-serializeascdata",
+    "dom-xmlserializer": "dom-xmlserializer",
+    "dom-xmlserializer-serializetostring": "dom-xmlserializer-serializetostring",
+    "domparser": "domparser",
+    "other applicable specifications": "other-applicable-specifications",
+    "serialize as cdata flag": "serialize-as-cdata-flag",
+    "supportedtype": "supportedtype",
+    "xmlserializer": "xmlserializer"
+  },
+  "url": "http://html5.org/specs/dom-parsing.html#"
+}

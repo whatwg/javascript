@@ -1,0 +1,32 @@
+{
+  "definitions": {
+    "body": "body",
+    "body direction": "body-direction",
+    "close steps": "close-steps",
+    "concept-notification": "concept-notification",
+    "display steps": "display-steps",
+    "dom-notification": "dom-notification",
+    "dom-notification-close": "dom-notification-close",
+    "dom-notification-permission": "dom-notification-permission",
+    "dom-notification-requestpermission": "dom-notification-requestpermission",
+    "handler-onclick": "handler-onclick",
+    "handler-onclose": "handler-onclose",
+    "handler-onerror": "handler-onerror",
+    "handler-onshow": "handler-onshow",
+    "icon url": "icon-url",
+    "list of active notifications": "list-of-active-notifications",
+    "list of pending notifications": "list-of-pending-notifications",
+    "notification": "notification",
+    "notificationdirection": "notificationdirection",
+    "notificationoptions": "notificationoptions",
+    "notificationpermission": "notificationpermission",
+    "notificationpermissioncallback": "notificationpermissioncallback",
+    "permission": "permission-0",
+    "replace steps": "replace-steps",
+    "show steps": "show-steps",
+    "tag": "tag",
+    "title": "title",
+    "title direction": "title-direction"
+  },
+  "url": "http://dvcs.w3.org/hg/notifications/raw-file/tip/Overview.html"
+}

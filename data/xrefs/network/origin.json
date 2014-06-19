@@ -1,0 +1,11 @@
+{
+  "url": "http://tools.ietf.org/html/rfc6454#",
+  "definitions": {
+    "ascii serialization" : "section-6.2",
+    "origin" : "section-4",
+    "origin-list-or-null" : "section-7.1",
+    "same origin" : "section-5",
+    "serialized-origin" : "#section-7.1",
+    "unicode serialization" : "section-6.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "url": "http://tools.ietf.org/html/rfc2616/#",
+  "definitions": {
+    "delta-seconds" : "section-3.3.2",
+    "entity body" : "section-7.2",
+    "field-name" : "section-4.2",
+    "field-value" : "section-4.2",
+    "http-content-length" : "section-14.13",
+    "method" : "section-5.1.1"
+  }
+}

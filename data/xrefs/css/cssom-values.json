@@ -1,0 +1,21 @@
+{
+  "definitions": {
+    "csscolorcomponentvalue": "csscolorcomponentvalue",
+    "csscomponentvalue": "csscomponentvalue",
+    "cssidentifiercomponentvalue": "cssidentifiercomponentvalue",
+    "csskeywordcomponentvalue": "csskeywordcomponentvalue",
+    "csslengthcomponentvalue": "csslengthcomponentvalue",
+    "cssmapvalue": "cssmapvalue",
+    "csspercentagecomponentvalue": "csspercentagecomponentvalue",
+    "csspropertyvalue": "csspropertyvalue",
+    "csspropertyvaluelist": "csspropertyvaluelist",
+    "cssstringcomponentvalue": "cssstringcomponentvalue",
+    "cssurlcomponentvalue": "cssurlcomponentvalue",
+    "parse a css value": "parse-a-css-value",
+    "serialize a css component value": "serialize-a-css-value-component",
+    "serialize a css value": "serialize-a-css-value",
+    "supported styling language": "supported-styling-language",
+    "whitespace": "whitespace"
+  },
+  "url": "http://dvcs.w3.org/hg/csswg/raw-file/tip/cssom-values/Overview.html#"
+}

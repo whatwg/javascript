@@ -1,0 +1,13 @@
+{
+  "url": "http://www.khronos.org/registry/typedarray/specs/latest/#",
+  "definitions": {
+    "arraybuffer": "5",
+    "arraybufferview": "6",
+    "int8array": "7",
+    "uint8array": "7",
+    "int16array": "7",
+    "uint16array": "7",
+    "int32array": "7",
+    "uint32array": "7"
+  }
+}

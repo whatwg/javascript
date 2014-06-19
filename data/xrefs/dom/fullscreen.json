@@ -1,0 +1,20 @@
+{
+  "definitions": {
+    "concept-fullscreen-add": "concept-fullscreen-add",
+    "concept-fullscreen-empty": "concept-fullscreen-empty",
+    "concept-fullscreen-remove": "concept-fullscreen-remove",
+    "context object": "context-object",
+    "css-pc-fullscreen": "css-pc-fullscreen",
+    "css-pe-backdrop": "css-pe-backdrop",
+    "descendant browsing context": "descendant-browsing-context",
+    "dom-document-exitfullscreen": "dom-document-exitfullscreen",
+    "dom-document-fullscreenelement": "dom-document-fullscreenelement",
+    "dom-document-fullscreenenabled": "dom-document-fullscreenenabled",
+    "dom-element-requestfullscreen": "dom-element-requestfullscreen",
+    "fullscreen element stack": "fullscreen-element-stack",
+    "fullscreen enabled flag": "fullscreen-enabled-flag",
+    "fully exit fullscreen": "fully-exit-fullscreen",
+    "top layer": "top-layer"
+  },
+  "url": "http://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html#"
+}

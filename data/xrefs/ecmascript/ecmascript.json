@@ -1,0 +1,32 @@
+{
+	"definitions": {
+		"[[enumerable]]": "sec-8.6.1",
+		"annex b": "sec-B",
+		"array.prototype.splice()": "sec-15.4.4.12",
+		"characterrange": "sec-15.10.2.15",
+		"character class ranges": "sec-15.10.1",
+		"checkobjectcoercible()": "sec-9.10",
+		"date.utc": "sec-15.9.4.3",
+		"decimalescape": "sec-15.10.1",
+		"ecmascript characters": "sec-6",
+		"formalparameterlist": "sec-13",
+		"functiondeclaration": "sec-13",
+		"identifier": "sec-7.6",
+		"identifiername": "sec-7.6",
+		"iscallable()": "sec-9.11",
+		"multilinecomment": "sec-7.4",
+		"object initializer": "sec-11.1.5",
+		"regular expression literals": "sec-7.8.5",
+		"singlelinecomment": "sec-7.4",
+		"string.prototype.substr()": "sec-B.2.3",
+		"octal escape syntax": "sec-B.1.2",
+		"the arguments object": "sec-10.6",
+		"tointeger()": "sec-9.4",
+		"tonumber()": "sec-9.3",
+		"tostring()": "sec-9.8",
+		"unicode escape sequence": "sec-7.8.4",
+		"variabledeclaration": "sec-5.1.6",
+		"whitespace": "sec-7.2"
+	},
+	"url": "http://ecma-international.org/ecma-262/5.1/#"
+}
