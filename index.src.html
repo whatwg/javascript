@@ -207,37 +207,6 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 <!-- TODO -->
 <p>The erratum in <a href="https://bugs.ecmascript.org/show_bug.cgi?id=78#c0">https://bugs.ecmascript.org/show_bug.cgi?id=78#c0</a> must be followed so that <code>var</code> statements at the top level of scripts can shadow any properties from the global object’s prototype chain.
 
-<h2><code>Array</code></h2>
-
-<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/array/>http://mathias.html5.org/tests/javascript/array/</a>.
-
-<h3 id=array.prototype.splice><code>Array.prototype.splice(<var>start</var>, <var>deleteCount</var>, <var>item1</var>, <var>item2</var>, <var>…</var>)</code></h3>
-
-<!--
-https://bugs.ecmascript.org/show_bug.cgi?id=429
-https://bugs.ecmascript.org/show_bug.cgi?id=1877
--->
-
-<p><span data-anolis-spec=ecmascript title=Array.prototype.splice()>This method is defined in the ECMAScript specification.</span> However, for Web compatibility, JavaScript implementations must perform the following additional step before continuing with the algorithm:
-
-<ol>
-	<li>If the <var>start</var> argument is provided and the <var>deleteCount</var> argument is omitted (i.e. when <code>arguments.length == 1</code>), set the value of <var>deleteCount</var> to <code>Infinity</code>.
-</ol>
-
-<p class=note>According to the algorithm in the ECMAScript spec, omitting the <var>deleteCount</var> argument or setting its value to <code>undefined</code> would have the same effect as passing the value <code>0</code> (rather than <code>Infinity</code>), regardless of whether the <var>start</var> argument is provided or not.
-
-<pre class=example>var array = ['a', 'b', 'c', 'd'];
-array.splice(2); // ['c', 'd']
-array; // ['a', 'b']
-
-array = ['a', 'b', 'c', 'd'];
-array.splice(2, Infinity); // ['c', 'd']
-array; // ['a', 'b']
-
-array = ['a', 'b', 'c', 'd'];
-array.splice(2, undefined); // []
-array; // ['a', 'b', 'c', 'd']</pre>
-
 <h2><code>String</code></h2>
 
 <p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/string/>http://mathias.html5.org/tests/javascript/string/</a>.

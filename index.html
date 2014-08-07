@@ -67,46 +67,43 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
   <ol>
    <li><a href="#comment-syntax"><span class="secno">7.1 </span>Comment syntax</a></ol></li>
  <li><a href="#top-level-var-statements"><span class="secno">8 </span>Top-level <code>var</code> statements</a></li>
- <li><a href="#array"><span class="secno">9 </span><code>Array</code></a>
+ <li><a href="#string"><span class="secno">9 </span><code>String</code></a>
   <ol>
-   <li><a href="#array.prototype.splice"><span class="secno">9.1 </span><code>Array.prototype.splice(<var>start</var>, <var>deleteCount</var>, <var>item1</var>, <var>item2</var>, <var>…</var>)</code></a></ol></li>
- <li><a href="#string"><span class="secno">10 </span><code>String</code></a>
+   <li><a href="#string.prototype.anchor"><span class="secno">9.1 </span><code>String.prototype.anchor(<var>name</var>)</code></a></li>
+   <li><a href="#string.prototype.big"><span class="secno">9.2 </span><code>String.prototype.big()</code></a></li>
+   <li><a href="#string.prototype.blink"><span class="secno">9.3 </span><code>String.prototype.blink()</code></a></li>
+   <li><a href="#string.prototype.bold"><span class="secno">9.4 </span><code>String.prototype.bold()</code></a></li>
+   <li><a href="#string.prototype.fixed"><span class="secno">9.5 </span><code>String.prototype.fixed()</code></a></li>
+   <li><a href="#string.prototype.fontcolor"><span class="secno">9.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></a></li>
+   <li><a href="#string.prototype.fontsize"><span class="secno">9.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></a></li>
+   <li><a href="#string.prototype.italics"><span class="secno">9.8 </span><code>String.prototype.italics()</code></a></li>
+   <li><a href="#string.prototype.link"><span class="secno">9.9 </span><code>String.prototype.link(<var>href</var>)</code></a></li>
+   <li><a href="#string.prototype.small"><span class="secno">9.10 </span><code>String.prototype.small()</code></a></li>
+   <li><a href="#string.prototype.strike"><span class="secno">9.11 </span><code>String.prototype.strike()</code></a></li>
+   <li><a href="#string.prototype.sub"><span class="secno">9.12 </span><code>String.prototype.sub()</code></a></li>
+   <li><a href="#string.prototype.substr"><span class="secno">9.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></a></li>
+   <li><a href="#string.prototype.sup"><span class="secno">9.14 </span><code>String.prototype.sup()</code></a></ol></li>
+ <li><a href="#date"><span class="secno">10 </span><code>Date</code></a>
   <ol>
-   <li><a href="#string.prototype.anchor"><span class="secno">10.1 </span><code>String.prototype.anchor(<var>name</var>)</code></a></li>
-   <li><a href="#string.prototype.big"><span class="secno">10.2 </span><code>String.prototype.big()</code></a></li>
-   <li><a href="#string.prototype.blink"><span class="secno">10.3 </span><code>String.prototype.blink()</code></a></li>
-   <li><a href="#string.prototype.bold"><span class="secno">10.4 </span><code>String.prototype.bold()</code></a></li>
-   <li><a href="#string.prototype.fixed"><span class="secno">10.5 </span><code>String.prototype.fixed()</code></a></li>
-   <li><a href="#string.prototype.fontcolor"><span class="secno">10.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></a></li>
-   <li><a href="#string.prototype.fontsize"><span class="secno">10.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></a></li>
-   <li><a href="#string.prototype.italics"><span class="secno">10.8 </span><code>String.prototype.italics()</code></a></li>
-   <li><a href="#string.prototype.link"><span class="secno">10.9 </span><code>String.prototype.link(<var>href</var>)</code></a></li>
-   <li><a href="#string.prototype.small"><span class="secno">10.10 </span><code>String.prototype.small()</code></a></li>
-   <li><a href="#string.prototype.strike"><span class="secno">10.11 </span><code>String.prototype.strike()</code></a></li>
-   <li><a href="#string.prototype.sub"><span class="secno">10.12 </span><code>String.prototype.sub()</code></a></li>
-   <li><a href="#string.prototype.substr"><span class="secno">10.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></a></li>
-   <li><a href="#string.prototype.sup"><span class="secno">10.14 </span><code>String.prototype.sup()</code></a></ol></li>
- <li><a href="#date"><span class="secno">11 </span><code>Date</code></a>
+   <li><a href="#date.utc"><span class="secno">10.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
+ <li><a href="#regexp"><span class="secno">11 </span><code>RegExp</code></a>
   <ol>
-   <li><a href="#date.utc"><span class="secno">11.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
- <li><a href="#regexp"><span class="secno">12 </span><code>RegExp</code></a>
+   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">11.1 </span>Octal escapes in regular expression literals</a></li>
+   <li><a href="#regexp.$n"><span class="secno">11.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
+   <li><a href="#regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></li>
+   <li><a href="#regexp.prototype.compile"><span class="secno">11.4 </span><code>RegExp.prototype.compile()</code></a></ol></li>
+ <li><a href="#function"><span class="secno">12 </span><code>Function</code></a>
   <ol>
-   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">12.1 </span>Octal escapes in regular expression literals</a></li>
-   <li><a href="#regexp.$n"><span class="secno">12.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
-   <li><a href="#regexp.lastmatch"><span class="secno">12.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></li>
-   <li><a href="#regexp.prototype.compile"><span class="secno">12.4 </span><code>RegExp.prototype.compile()</code></a></ol></li>
- <li><a href="#function"><span class="secno">13 </span><code>Function</code></a>
+   <li><a href="#function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></a></li>
+   <li><a href="#function.prototype.caller"><span class="secno">12.2 </span><code>Function.prototype.caller</code></a></li>
+   <li><a href="#function.prototype.tostring()"><span class="secno">12.3 </span><code>Function.prototype.toString()</code></a></ol></li>
+ <li><a href="#object"><span class="secno">13 </span><code>Object</code></a>
   <ol>
-   <li><a href="#function.prototype.arguments"><span class="secno">13.1 </span><code>Function.prototype.arguments</code></a></li>
-   <li><a href="#function.prototype.caller"><span class="secno">13.2 </span><code>Function.prototype.caller</code></a></li>
-   <li><a href="#function.prototype.tostring()"><span class="secno">13.3 </span><code>Function.prototype.toString()</code></a></ol></li>
- <li><a href="#object"><span class="secno">14 </span><code>Object</code></a>
-  <ol>
-   <li><a href="#object.prototype.__definegetter__"><span class="secno">14.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__definesetter__"><span class="secno">14.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">14.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">14.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__proto__"><span class="secno">14.5 </span><code>Object.prototype.__proto__</code></a></ol></li>
+   <li><a href="#object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
+   <li><a href="#object.prototype.__definesetter__"><span class="secno">13.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
+   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">13.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
+   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">13.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></li>
+   <li><a href="#object.prototype.__proto__"><span class="secno">13.5 </span><code>Object.prototype.__proto__</code></a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -266,38 +263,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 <!-- TODO -->
 <p>The erratum in <a href="https://bugs.ecmascript.org/show_bug.cgi?id=78#c0">https://bugs.ecmascript.org/show_bug.cgi?id=78#c0</a> must be followed so that <code>var</code> statements at the top level of scripts can shadow any properties from the global object’s prototype chain.
 
-<h2 id="array"><span class="secno">9 </span><code>Array</code></h2>
-
-<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/array/">http://mathias.html5.org/tests/javascript/array/</a>.
-
-<h3 id="array.prototype.splice"><span class="secno">9.1 </span><code>Array.prototype.splice(<var>start</var>, <var>deleteCount</var>, <var>item1</var>, <var>item2</var>, <var>…</var>)</code></h3>
-
-<!--
-https://bugs.ecmascript.org/show_bug.cgi?id=429
-https://bugs.ecmascript.org/show_bug.cgi?id=1877
--->
-
-<p><a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.prototype.splice" title="Array.prototype.splice()">This method is defined in the ECMAScript specification.</a> However, for Web compatibility, JavaScript implementations must perform the following additional step before continuing with the algorithm:
-
-<ol>
-	<li>If the <var>start</var> argument is provided and the <var>deleteCount</var> argument is omitted (i.e. when <code>arguments.length == 1</code>), set the value of <var>deleteCount</var> to <code>Infinity</code>.
-</ol>
-
-<p class="note">According to the algorithm in the ECMAScript spec, omitting the <var>deleteCount</var> argument or setting its value to <code>undefined</code> would have the same effect as passing the value <code>0</code> (rather than <code>Infinity</code>), regardless of whether the <var>start</var> argument is provided or not.
-
-<pre class="example">var array = ['a', 'b', 'c', 'd'];
-array.splice(2); // ['c', 'd']
-array; // ['a', 'b']
-
-array = ['a', 'b', 'c', 'd'];
-array.splice(2, Infinity); // ['c', 'd']
-array; // ['a', 'b']
-
-array = ['a', 'b', 'c', 'd'];
-array.splice(2, undefined); // []
-array; // ['a', 'b', 'c', 'd']</pre>
-
-<h2 id="string"><span class="secno">10 </span><code>String</code></h2>
+<h2 id="string"><span class="secno">9 </span><code>String</code></h2>
 
 <p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/string/">http://mathias.html5.org/tests/javascript/string/</a>.
 
@@ -305,7 +271,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>These methods are all generic, meaning the <code>this</code> argument need not be a <code>String</code> object.
 
-<h3 id="string.prototype.anchor"><span class="secno">10.1 </span><code>String.prototype.anchor(<var>name</var>)</code></h3>
+<h3 id="string.prototype.anchor"><span class="secno">9.1 </span><code>String.prototype.anchor(<var>name</var>)</code></h3>
 
 <!-- WebKit & IE don’t perform the CheckObjectCoercible step. -->
 
@@ -320,7 +286,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>name</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.big"><span class="secno">10.2 </span><code>String.prototype.big()</code></h3>
+<h3 id="string.prototype.big"><span class="secno">9.2 </span><code>String.prototype.big()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -330,7 +296,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>big</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.blink"><span class="secno">10.3 </span><code>String.prototype.blink()</code></h3>
+<h3 id="string.prototype.blink"><span class="secno">9.3 </span><code>String.prototype.blink()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -340,7 +306,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>blink</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.bold"><span class="secno">10.4 </span><code>String.prototype.bold()</code></h3>
+<h3 id="string.prototype.bold"><span class="secno">9.4 </span><code>String.prototype.bold()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -350,7 +316,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>bold</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.fixed"><span class="secno">10.5 </span><code>String.prototype.fixed()</code></h3>
+<h3 id="string.prototype.fixed"><span class="secno">9.5 </span><code>String.prototype.fixed()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -360,7 +326,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>fixed</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.fontcolor"><span class="secno">10.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></h3>
+<h3 id="string.prototype.fontcolor"><span class="secno">9.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -373,7 +339,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>color</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.fontsize"><span class="secno">10.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></h3>
+<h3 id="string.prototype.fontsize"><span class="secno">9.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -386,7 +352,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>size</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.italics"><span class="secno">10.8 </span><code>String.prototype.italics()</code></h3>
+<h3 id="string.prototype.italics"><span class="secno">9.8 </span><code>String.prototype.italics()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -396,7 +362,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>italics</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.link"><span class="secno">10.9 </span><code>String.prototype.link(<var>href</var>)</code></h3>
+<h3 id="string.prototype.link"><span class="secno">9.9 </span><code>String.prototype.link(<var>href</var>)</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -409,7 +375,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>href</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.small"><span class="secno">10.10 </span><code>String.prototype.small()</code></h3>
+<h3 id="string.prototype.small"><span class="secno">9.10 </span><code>String.prototype.small()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -419,7 +385,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>small</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.strike"><span class="secno">10.11 </span><code>String.prototype.strike()</code></h3>
+<h3 id="string.prototype.strike"><span class="secno">9.11 </span><code>String.prototype.strike()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -429,7 +395,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>strike</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.sub"><span class="secno">10.12 </span><code>String.prototype.sub()</code></h3>
+<h3 id="string.prototype.sub"><span class="secno">9.12 </span><code>String.prototype.sub()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -439,11 +405,11 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>sub</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.substr"><span class="secno">10.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
+<h3 id="string.prototype.substr"><span class="secno">9.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
 
 <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-string.prototype.substr" title="String.prototype.substr()">This method is defined in Annex B.2.3 of the ECMAScript specification.</a> Although this section is non-normative, user agents must implement it for Web compatibility.
 
-<h3 id="string.prototype.sup"><span class="secno">10.14 </span><code>String.prototype.sup()</code></h3>
+<h3 id="string.prototype.sup"><span class="secno">9.14 </span><code>String.prototype.sup()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -453,33 +419,33 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <p>The <code>length</code> property of the <code>sup</code> method is <code>0</code>.</p>
 
-<h2 id="date"><span class="secno">11 </span><code>Date</code></h2>
+<h2 id="date"><span class="secno">10 </span><code>Date</code></h2>
 
-<h3 id="date.utc"><span class="secno">11.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
+<h3 id="date.utc"><span class="secno">10.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
 <p>When called with fewer than two arguments, <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
 
-<h2 id="regexp"><span class="secno">12 </span><code>RegExp</code></h2>
+<h2 id="regexp"><span class="secno">11 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">12.1 </span>Octal escapes in regular expression literals</h3>
+<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">11.1 </span>Octal escapes in regular expression literals</h3>
 
 <p>The <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
 
 <pre class="example">/\123/.test('S'); // true</pre>
 
-<h3 id="regexp.$n"><span class="secno">12.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
+<h3 id="regexp.$n"><span class="secno">11.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
 
 <p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
 
-<h3 id="regexp.lastmatch"><span class="secno">12.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
+<h3 id="regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
 
 <!-- TODO:
 https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
 http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 -->
 
-<h3 id="regexp.prototype.compile"><span class="secno">12.4 </span><code>RegExp.prototype.compile()</code></h3>
+<h3 id="regexp.prototype.compile"><span class="secno">11.4 </span><code>RegExp.prototype.compile()</code></h3>
 
 <p>The <code>length</code> property of the <code>compile</code> method is <code>1</code>.</p>
 <!-- Mutates a regex in place, e.g.
@@ -488,11 +454,11 @@ http://twitter.com/slevithan/status/219880359263875072
 In Carakan/Nitro/V8 the method returns `undefined`; in SpiderMonkey it returns the regexp object.
 -->
 
-<h2 id="function"><span class="secno">13 </span><code>Function</code></h2>
+<h2 id="function"><span class="secno">12 </span><code>Function</code></h2>
 
 <p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/function/">http://mathias.html5.org/tests/javascript/function/</a>.
 
-<h3 id="function.prototype.arguments"><span class="secno">13.1 </span><code>Function.prototype.arguments</code></h3>
+<h3 id="function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></h3>
 
 <!-- TODO: mutable or not? http://jon-carlos.com/projects/wtf/ -->
 
@@ -526,7 +492,7 @@ b(1, 2, 3); // [{ '0': 1, '1': 2, '2': 3, 'length': 3 }, false]</pre>
 };
 a(1, 2, 3); // throws a TypeError</pre>
 
-<h3 id="function.prototype.caller"><span class="secno">13.2 </span><code>Function.prototype.caller</code></h3>
+<h3 id="function.prototype.caller"><span class="secno">12.2 </span><code>Function.prototype.caller</code></h3>
 
 <p>Each <code>Function</code> instance must have a <code>caller</code> property that is a reference to the function that invoked the specified function.
 
@@ -554,12 +520,12 @@ a(); // null</pre>
 };
 fn(); // throws a TypeError</pre>
 
-<h3 id="function.prototype.tostring()"><span class="secno">13.3 </span><code>Function.prototype.toString()</code></h3>
+<h3 id="function.prototype.tostring()"><span class="secno">12.3 </span><code>Function.prototype.toString()</code></h3>
 
 TODO
 <!-- http://ecma-international.org/ecma-262/5.1/#sec-15.3.4.2 leaves everything up to the implementation -->
 
-<h2 id="object"><span class="secno">14 </span><code>Object</code></h2>
+<h2 id="object"><span class="secno">13 </span><code>Object</code></h2>
 
 <!--
 https://bugs.webkit.org/show_bug.cgi?id=93873: Object#__define{G,S}etter__ should throw TypeError if IsCallable(function) is false
@@ -569,7 +535,7 @@ https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.proto
 
 <p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/object/">http://mathias.html5.org/tests/javascript/object/</a>.
 
-<h3 id="object.prototype.__definegetter__"><span class="secno">14.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+<h3 id="object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__definegetter__"><code>__defineGetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is accessed.
 
@@ -599,7 +565,7 @@ myDate.year; // 2012</pre>
 
 <p>The <code>length</code> property of the <a href="#__definegetter__"><code>__defineGetter__</code></a> method is <code>2</code>.</p>
 
-<h3 id="object.prototype.__definesetter__"><span class="secno">14.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+<h3 id="object.prototype.__definesetter__"><span class="secno">13.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__definesetter__"><code>__defineSetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is set.
 
@@ -632,7 +598,7 @@ myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
 
 <p>The <code>length</code> property of the <a href="#__definesetter__"><code>__defineSetter__</code></a> method is <code>2</code>.</p>
 
-<h3 id="object.prototype.__lookupgetter__"><span class="secno">14.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
+<h3 id="object.prototype.__lookupgetter__"><span class="secno">13.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
 
 <!--
 # [12:49] <jgraham> matjas: __lookupGetter__ and friends probably want to be defined in terms of AccessorDescriptors as per ES5
@@ -651,7 +617,7 @@ object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
 
 <p>The <code>length</code> property of the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method is <code>1</code>.</p>
 
-<h3 id="object.prototype.__lookupsetter__"><span class="secno">14.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
+<h3 id="object.prototype.__lookupsetter__"><span class="secno">13.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__lookupsetter__"><code>__lookupSetter__</code></dfn> method that implements the following algorithm:
 
@@ -665,7 +631,7 @@ object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }
 
 <p>The <code>length</code> property of the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method is <code>1</code>.</p>
 
-<h3 id="object.prototype.__proto__"><span class="secno">14.5 </span><code>Object.prototype.__proto__</code></h3>
+<h3 id="object.prototype.__proto__"><span class="secno">13.5 </span><code>Object.prototype.__proto__</code></h3>
 
 <!--
 TODO: __proto__ will be fully specced in ES6; amend/remove this when that happens.
