@@ -3,7 +3,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport">
 <link href="http://www.whatwg.org/style/specification" rel="stylesheet">
 <style>
-	html { background: #fff; -o-tab-size: 2; -moz-tab-size: 2; tab-size: 2; }
+	html { background: #fff; -moz-tab-size: 2; tab-size: 2; }
 	body { margin: 0 auto; padding: 0; max-width: 60em; border: 0; }
 	pre, code, a { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
 	.status { border: 1px solid green; padding: 1em; background: #90ee85; }
@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-19-june-2014">Living Standard — 19 June 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-7-august-2014">Living Standard — 7 August 2014</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="http://javascript.spec.whatwg.org/">http://javascript.spec.whatwg.org/</a>
@@ -39,7 +39,7 @@
 <p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-19 June 2014, the editor has made this specification available
+7 August 2014, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -151,7 +151,7 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 
 <h3 id="checkobjectcoercible"><span class="secno">4.1 </span><code>CheckObjectCoercible(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="checkobjectcoercible-0">CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.10" title="CheckObjectCoercible()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="checkobjectcoercible-0">CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-checkobjectcoercible" title="CheckObjectCoercible()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="escapeattributevalue"><span class="secno">4.2 </span><code>EscapeAttributeValue(<var>value</var>)</code></h3>
 
@@ -186,11 +186,11 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <h3 id="iscallable"><span class="secno">4.3 </span><code>IsCallable(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.11" title="IsCallable()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iscallable" title="IsCallable()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="tostring"><span class="secno">4.4 </span><code>ToString(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-9.8" title="ToString()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tostring" title="ToString()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
 
@@ -203,18 +203,11 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <h2 id="annex-b"><span class="secno">5 </span>Annex B</h2>
 
-<p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>. This includes:
-
-<ul>
-	<li>additional non-strict mode syntax and semantics for octal literals in numeric literals and octal escape sequences in string literals;
-	<li>the global <code>escape(<var>string</var>)</code> and <code>unescape(<var>string</var>)</code> methods;
-	<li>the <code>String.prototype.substr(<var>start</var>, <var>length</var>)</code> method;
-	<li>the <code>Date.prototype.getYear()</code>, <code>Date.prototype.setYear(<var>year</var>)</code>, and <code>Date.prototype.toGMTString()</code> methods.
-</ul>
+<p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>.
 
 <h2 id="unicode-database-version"><span class="secno">6 </span>Unicode database version</h2>
 
-<p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are allowed in <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.6" title="Identifier"><code>Identifier</code>s</a> and <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.6" title="IdentifierName"><code>IdentifierName</code>s</a>, and which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.2" title="Whitespace">whitespace characters</a>. <a href="#refsUNICODE">[UNICODE]</a>
+<p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are allowed in <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords" title="Identifier"><code>Identifier</code>s</a> and <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords" title="IdentifierName"><code>IdentifierName</code>s</a>, and which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-white-space" title="Whitespace">whitespace characters</a>. <a href="#refsUNICODE">[UNICODE]</a>
 
 <h2 id="syntax"><span class="secno">7 </span>Syntax</h2>
 
@@ -224,13 +217,13 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 <!-- Opera bug: DSK-369203 -->
 <!-- ES spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=1471 -->
 
-<p><code>&lt;!--</code> must be treated as the start of a <a href="http://ecma-international.org/ecma-262/5.1/#sec-7.4"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
+<p><code>&lt;!--</code> must be treated as the start of a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-comments"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
 
 <pre class="example">var x = true;
 &lt;!-- x = false; // note: no syntax error
 x; // true</pre>
 
-<p><code>--&gt;</code> at the start of a line, optionally preceded by <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.2">whitespace</a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-7.4" title="MultiLineComment"><code>MultiLineComment</code>s</a>, must be treated as a <a href="http://ecma-international.org/ecma-262/5.1/#sec-7.4"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
+<p><code>--&gt;</code> at the start of a line, optionally preceded by <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-white-space">whitespace</a> or <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-comments" title="MultiLineComment"><code>MultiLineComment</code>s</a>, must be treated as a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-comments"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
 
 <pre class="example">var x = true;
 --&gt; x = false; // note: no syntax error
@@ -284,7 +277,7 @@ https://bugs.ecmascript.org/show_bug.cgi?id=429
 https://bugs.ecmascript.org/show_bug.cgi?id=1877
 -->
 
-<p><a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-15.4.4.12" title="Array.prototype.splice()">This method is defined in the ECMAScript specification.</a> However, for Web compatibility, JavaScript implementations must perform the following additional step before continuing with the algorithm:
+<p><a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.prototype.splice" title="Array.prototype.splice()">This method is defined in the ECMAScript specification.</a> However, for Web compatibility, JavaScript implementations must perform the following additional step before continuing with the algorithm:
 
 <ol>
 	<li>If the <var>start</var> argument is provided and the <var>deleteCount</var> argument is omitted (i.e. when <code>arguments.length == 1</code>), set the value of <var>deleteCount</var> to <code>Infinity</code>.
@@ -448,7 +441,7 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <h3 id="string.prototype.substr"><span class="secno">10.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
 
-<a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-B.2.3" title="String.prototype.substr()">This method is defined in Annex B.2.3 of the ECMAScript specification.</a> Although this section is non-normative, user agents must implement it for Web compatibility.
+<a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-string.prototype.substr" title="String.prototype.substr()">This method is defined in Annex B.2.3 of the ECMAScript specification.</a> Although this section is non-normative, user agents must implement it for Web compatibility.
 
 <h3 id="string.prototype.sup"><span class="secno">10.14 </span><code>String.prototype.sup()</code></h3>
 
@@ -464,14 +457,14 @@ array; // ['a', 'b', 'c', 'd']</pre>
 
 <h3 id="date.utc"><span class="secno">11.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
-<p>When called with fewer than two arguments, <a href="http://ecma-international.org/ecma-262/5.1/#sec-15.9.4.3"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
+<p>When called with fewer than two arguments, <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
 
 <h2 id="regexp"><span class="secno">12 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
 <h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">12.1 </span>Octal escapes in regular expression literals</h3>
 
-<p>The <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-B.1.2" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
+<p>The <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
 
 <pre class="example">/\123/.test('S'); // true</pre>
 
@@ -503,7 +496,7 @@ In Carakan/Nitro/V8 the method returns `undefined`; in SpiderMonkey it returns t
 
 <!-- TODO: mutable or not? http://jon-carlos.com/projects/wtf/ -->
 
-<p>Each <code>Function</code> instance must have an <code>arguments</code> property that is equivalent to <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-10.6" title="The arguments object">the standard <code>arguments</code> object</a> within that function.
+<p>Each <code>Function</code> instance must have an <code>arguments</code> property that is equivalent to <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arguments-exotic-objects" title="The arguments object">the standard <code>arguments</code> object</a> within that function.
 
 <pre class="example">var a = function(x, y, z) {
 	return [a.arguments, a.arguments === arguments];
@@ -518,7 +511,7 @@ a(1, 2, 3); // [{ '0': 1, '1': 2, '2': 3, 'length': 3 }], true]</pre>
 a(1, 2, 3); // { '0': 1, '1': 2, '2': 3, 'length': 3 }
 a.arguments; // null</pre>
 
-<p>The standard <code>arguments</code> object is not created if the identifier “<code>arguments</code>” occurs as an <a href="http://ecma-international.org/ecma-262/5.1/#sec-7.6"><code class="external" data-anolis-spec="ecmascript">Identifier</code></a> in the function’s <a href="http://ecma-international.org/ecma-262/5.1/#sec-13"><code class="external" data-anolis-spec="ecmascript">FormalParameterList</code></a> or occurs as an <a href="http://ecma-international.org/ecma-262/5.1/#sec-7.6"><code class="external" data-anolis-spec="ecmascript">Identifier</code></a> of a <a href="http://ecma-international.org/ecma-262/5.1/#sec-13"><code class="external" data-anolis-spec="ecmascript">FunctionDeclaration</code></a> contained in the function code. However, even in these cases, the <code>arguments</code> property must be added to the function’s prototype.
+<p>The standard <code>arguments</code> object is not created if the identifier “<code>arguments</code>” occurs as an <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords"><code class="external" data-anolis-spec="ecmascript">Identifier</code></a> in the function’s <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions"><code class="external" data-anolis-spec="ecmascript">FormalParameterList</code></a> or occurs as an <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords"><code class="external" data-anolis-spec="ecmascript">Identifier</code></a> of a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-functions-and-scripts"><code class="external" data-anolis-spec="ecmascript">FunctionDeclaration</code></a> contained in the function code. However, even in these cases, the <code>arguments</code> property must be added to the function’s prototype.
 
 <pre class="example">var b = function(x, y, arguments) {
 	return [b.arguments, b.arguments === arguments];
@@ -584,7 +577,7 @@ https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.proto
 	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
 	<li>Let <var>obj</var> be <var>this</var>.
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="http://ecma-international.org/ecma-262/5.1/#sec-8.6.1"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the internal <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
 	<li>Whenever a property with the name of <var>prop</var> is accessed on the <var>obj</var> object, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, and return the result.
 	<li>Whenever the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
 	<li>Return <code>undefined</code>.
@@ -614,7 +607,7 @@ myDate.year; // 2012</pre>
 	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
 	<li>Let <var>obj</var> be <var>this</var>.
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="http://ecma-international.org/ecma-262/5.1/#sec-8.6.1"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the internal <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
 	<li>Set the <var>prop</var> property on the <var>obj</var> object to <code>undefined</code>.
 	<li>Whenever a property with the name of <var>prop</var> is set to a value <var>val</var> on the <var>obj</var> object, instead of setting the <var>prop</var> property to <var>val</var>, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, passing <var>val</var> as its first argument.
 	<li>Whenever the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
@@ -650,7 +643,7 @@ myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
 
 <ol>
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-11.1.5" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
+	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initializer" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
 </ol>
 
 <pre class="example">var object = { get foo() { return 1; } };
@@ -664,7 +657,7 @@ object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
 
 <ol>
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/5.1/#sec-11.1.5" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
+	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initializer" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
 </ol>
 
 <pre class="example">var object = { set foo(value) { this.bar = value * 2; } };

@@ -4,7 +4,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link href=http://www.whatwg.org/style/specification rel=stylesheet>
 <style>
-	html { background: #fff; -o-tab-size: 2; -moz-tab-size: 2; tab-size: 2; }
+	html { background: #fff; -moz-tab-size: 2; tab-size: 2; }
 	body { margin: 0 auto; padding: 0; max-width: 60em; border: 0; }
 	pre, code, a { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
 	.status { border: 1px solid green; padding: 1em; background: #90ee85; }
@@ -144,14 +144,7 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <h2>Annex B</h2>
 
-<p>JavaScript implementations must fully implement <span data-anolis-spec=ecmascript title="Annex B">Annex B of the ECMAScript specification</span>. This includes:
-
-<ul>
-	<li>additional non-strict mode syntax and semantics for octal literals in numeric literals and octal escape sequences in string literals;
-	<li>the global <code>escape(<var>string</var>)</code> and <code>unescape(<var>string</var>)</code> methods;
-	<li>the <code>String.prototype.substr(<var>start</var>, <var>length</var>)</code> method;
-	<li>the <code>Date.prototype.getYear()</code>, <code>Date.prototype.setYear(<var>year</var>)</code>, and <code>Date.prototype.toGMTString()</code> methods.
-</ul>
+<p>JavaScript implementations must fully implement <span data-anolis-spec=ecmascript title="Annex B">Annex B of the ECMAScript specification</span>.
 
 <h2>Unicode database version</h2>
 
