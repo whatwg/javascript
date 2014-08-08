@@ -589,31 +589,6 @@ object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }
 
 <p>The <code>length</code> property of the <code>__lookupSetter__</code> method is <code>1</code>.</p>
 
-<h3><code>Object.prototype.__proto__</code></h3>
-
-<!--
-TODO: __proto__ will be fully specced in ES6; amend/remove this when that happens.
-http://twitter.com/rwaldron/status/215291884854198274
--->
-<p>All objects must have a mutable <code>__proto__</code> property that is a reference to the prototype of the object. Note that ECMAScript defines that objects for which the <code>[[Extensible]]</code> internal property is <code>false</code> must not have their prototype mutated.
-<!-- TODO test: ({}).__proto__.__proto__; // null -->
-
-<pre class=example>var string = 'foo';
-string.__proto__ === String.prototype; // true</pre>
-
-<pre class=example>var object = {};
-object.__proto__ === Object.prototype; // true
-object.length; // undefined
-object.__proto__ = Array.prototype;
-object.length; // 0</pre>
-
-<p>In the case that setting an object’s <code>__proto__</code> would cause a prototype chain to become cyclic, the setter must fail and throw an error.
-
-<pre class=example>var object = {};
-object.__proto__ = object; // throws an Error</pre>
-
-<p class=note><code>__proto__</code> will be fully specced in ECMAScript 6 (although the latest draft only defines it in Annex B). This section will be amended / removed when that happens.</p>
-
 <h2 class=no-num>References</h2>
 
 <div id=anolis-references></div>

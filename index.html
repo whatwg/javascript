@@ -102,8 +102,7 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
    <li><a href="#object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
    <li><a href="#object.prototype.__definesetter__"><span class="secno">13.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
    <li><a href="#object.prototype.__lookupgetter__"><span class="secno">13.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">13.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__proto__"><span class="secno">13.5 </span><code>Object.prototype.__proto__</code></a></ol></li>
+   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">13.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -644,31 +643,6 @@ object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
 object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }</pre>
 
 <p>The <code>length</code> property of the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method is <code>1</code>.</p>
-
-<h3 id="object.prototype.__proto__"><span class="secno">13.5 </span><code>Object.prototype.__proto__</code></h3>
-
-<!--
-TODO: __proto__ will be fully specced in ES6; amend/remove this when that happens.
-http://twitter.com/rwaldron/status/215291884854198274
--->
-<p>All objects must have a mutable <code>__proto__</code> property that is a reference to the prototype of the object. Note that ECMAScript defines that objects for which the <code>[[Extensible]]</code> internal property is <code>false</code> must not have their prototype mutated.
-<!-- TODO test: ({}).__proto__.__proto__; // null -->
-
-<pre class="example">var string = 'foo';
-string.__proto__ === String.prototype; // true</pre>
-
-<pre class="example">var object = {};
-object.__proto__ === Object.prototype; // true
-object.length; // undefined
-object.__proto__ = Array.prototype;
-object.length; // 0</pre>
-
-<p>In the case that setting an object’s <code>__proto__</code> would cause a prototype chain to become cyclic, the setter must fail and throw an error.
-
-<pre class="example">var object = {};
-object.__proto__ = object; // throws an Error</pre>
-
-<p class="note"><code>__proto__</code> will be fully specced in ECMAScript 6 (although the latest draft only defines it in Annex B). This section will be amended / removed when that happens.</p>
 
 <h2 class="no-num" id="references">References</h2>
 
