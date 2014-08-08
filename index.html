@@ -90,8 +90,7 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
   <ol>
    <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">11.1 </span>Octal escapes in regular expression literals</a></li>
    <li><a href="#regexp.$n"><span class="secno">11.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
-   <li><a href="#regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></li>
-   <li><a href="#regexp.prototype.compile"><span class="secno">11.4 </span><code>RegExp.prototype.compile()</code></a></ol></li>
+   <li><a href="#regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
  <li><a href="#function"><span class="secno">12 </span><code>Function</code></a>
   <ol>
    <li><a href="#function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></a></li>
@@ -449,15 +448,6 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1050755
 <!-- TODO:
 https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
 http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
--->
-
-<h3 id="regexp.prototype.compile"><span class="secno">11.4 </span><code>RegExp.prototype.compile()</code></h3>
-
-<p>The <code>length</code> property of the <code>compile</code> method is <code>1</code>.</p>
-<!-- Mutates a regex in place, e.g.
-var r = /./, fn = function (m, r) {r.compile('..'); console.log(m);}, s = 'str'; fn(r.exec(s), r); fn(r.exec(s), r);
-http://twitter.com/slevithan/status/219880359263875072
-In Carakan/Nitro/V8 the method returns `undefined`; in SpiderMonkey it returns the regexp object.
 -->
 
 <h2 id="function"><span class="secno">12 </span><code>Function</code></h2>
