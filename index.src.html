@@ -365,9 +365,16 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <h2><code>Date</code></h2>
 
+<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/date/>http://mathias.html5.org/tests/javascript/date/</a>.
+
 <h3 id=date.utc><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
 <p>When called with fewer than two arguments, <code data-anolis-spec=ecmascript>Date.UTC</code> must return <code>NaN</code>.
+
+<!--
+https://bugs.ecmascript.org/show_bug.cgi?id=3112
+https://bugzilla.mozilla.org/show_bug.cgi?id=1050755
+-->
 
 <h2><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
@@ -404,7 +411,10 @@ In Carakan/Nitro/V8 the method returns `undefined`; in SpiderMonkey it returns t
 
 <h3><code>Function.prototype.arguments</code></h3>
 
-<!-- TODO: mutable or not? http://jon-carlos.com/projects/wtf/ -->
+<!--
+https://bugs.ecmascript.org/show_bug.cgi?id=3113
+TODO: mutable or not? http://jon-carlos.com/projects/wtf/
+-->
 
 <p>Each <code>Function</code> instance must have an <code>arguments</code> property that is equivalent to <span data-anolis-spec=ecmascript title="The arguments object">the standard <code>arguments</code> object</span> within that function.
 
@@ -438,6 +448,10 @@ a(1, 2, 3); // throws a TypeError</pre>
 
 <h3><code>Function.prototype.caller</code></h3>
 
+<!--
+https://bugs.ecmascript.org/show_bug.cgi?id=3113
+-->
+
 <p>Each <code>Function</code> instance must have a <code>caller</code> property that is a reference to the function that invoked the specified function.
 
 <pre class=example>var a = function() {
@@ -467,7 +481,7 @@ fn(); // throws a TypeError</pre>
 <h3><code>Function.prototype.toString()</code></h3>
 
 TODO
-<!-- http://ecma-international.org/ecma-262/5.1/#sec-15.3.4.2 leaves everything up to the implementation -->
+<!-- https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function.prototype.tostring leaves everything up to the implementation -->
 
 <h2><code>Object</code></h2>
 

@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-7-august-2014">Living Standard — 7 August 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-8-august-2014">Living Standard — 8 August 2014</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="http://javascript.spec.whatwg.org/">http://javascript.spec.whatwg.org/</a>
@@ -39,7 +39,7 @@
 <p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-7 August 2014, the editor has made this specification available
+8 August 2014, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -421,9 +421,16 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <h2 id="date"><span class="secno">10 </span><code>Date</code></h2>
 
+<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/date/">http://mathias.html5.org/tests/javascript/date/</a>.
+
 <h3 id="date.utc"><span class="secno">10.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
 <p>When called with fewer than two arguments, <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
+
+<!--
+https://bugs.ecmascript.org/show_bug.cgi?id=3112
+https://bugzilla.mozilla.org/show_bug.cgi?id=1050755
+-->
 
 <h2 id="regexp"><span class="secno">11 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
@@ -460,7 +467,10 @@ In Carakan/Nitro/V8 the method returns `undefined`; in SpiderMonkey it returns t
 
 <h3 id="function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></h3>
 
-<!-- TODO: mutable or not? http://jon-carlos.com/projects/wtf/ -->
+<!--
+https://bugs.ecmascript.org/show_bug.cgi?id=3113
+TODO: mutable or not? http://jon-carlos.com/projects/wtf/
+-->
 
 <p>Each <code>Function</code> instance must have an <code>arguments</code> property that is equivalent to <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arguments-exotic-objects" title="The arguments object">the standard <code>arguments</code> object</a> within that function.
 
@@ -494,6 +504,10 @@ a(1, 2, 3); // throws a TypeError</pre>
 
 <h3 id="function.prototype.caller"><span class="secno">12.2 </span><code>Function.prototype.caller</code></h3>
 
+<!--
+https://bugs.ecmascript.org/show_bug.cgi?id=3113
+-->
+
 <p>Each <code>Function</code> instance must have a <code>caller</code> property that is a reference to the function that invoked the specified function.
 
 <pre class="example">var a = function() {
@@ -523,7 +537,7 @@ fn(); // throws a TypeError</pre>
 <h3 id="function.prototype.tostring()"><span class="secno">12.3 </span><code>Function.prototype.toString()</code></h3>
 
 TODO
-<!-- http://ecma-international.org/ecma-262/5.1/#sec-15.3.4.2 leaves everything up to the implementation -->
+<!-- https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function.prototype.tostring leaves everything up to the implementation -->
 
 <h2 id="object"><span class="secno">13 </span><code>Object</code></h2>
 
