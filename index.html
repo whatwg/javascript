@@ -1,7 +1,7 @@
 <!DOCTYPE html><meta charset="utf-8">
 <title>JavaScript, aka. Web ECMAScript</title>
 <meta content="width=device-width,initial-scale=1" name="viewport">
-<link href="http://www.whatwg.org/style/specification" rel="stylesheet">
+<link href="https://www.whatwg.org/style/specification" rel="stylesheet">
 <style>
 	html { background: #fff; -moz-tab-size: 2; tab-size: 2; }
 	body { margin: 0 auto; padding: 0; max-width: 60em; border: 0; }
@@ -17,29 +17,29 @@
 		dd { margin-left: 0; }
 	}
 </style>
-<link href="http://resources.whatwg.org/logo-javascript.svg" rel="icon">
+<link href="https://resources.whatwg.org/logo-javascript.svg" rel="icon">
 <meta content="This specification aims to document the differences between the ECMAScript spec and the compatibility requirements for JavaScript implementations." name="description">
 <div class="head">
-	<p><a class="logo" href="http://www.whatwg.org/"><img alt="WHATWG" height="100" src="http://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
+	<p><a class="logo" href="https://www.whatwg.org/"><img alt="WHATWG" height="100" src="https://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-8-august-2014">Living Standard — 8 August 2014</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-15-september-2014">Living Standard — 15 September 2014</h2>
 	<dl>
 		<dt>This Version:
-			<dd><a href="http://javascript.spec.whatwg.org/">http://javascript.spec.whatwg.org/</a>
+			<dd><a href="https://javascript.spec.whatwg.org/">https://javascript.spec.whatwg.org/</a>
 		<dt>Participate:</dt>
 			<dd><a href="https://github.com/whatwg/javascript/issues/new">File a bug</a> (but check <a href="https://github.com/whatwg/javascript/issues?state=open">the list of open bugs</a> first)
-			<dd><a href="http://wiki.whatwg.org/wiki/IRC">IRC: #whatwg on Freenode</a>
+			<dd><a href="https://wiki.whatwg.org/wiki/IRC">IRC: #whatwg on Freenode</a>
 		<dt>Version History:
 			<dd><a href="https://github.com/whatwg/javascript">https://github.com/whatwg/javascript</a>
 		<dt>Editor:
-			<dd><a href="http://mathiasbynens.be/">Mathias Bynens</a>
+			<dd><a href="https://mathiasbynens.be/">Mathias Bynens</a>
 	</dl>
 </div>
 
-<p class="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="http://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
+<p class="copyright"><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-8 August 2014, the editor has made this specification available
+15 September 2014, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -164,8 +164,8 @@ IE/Chakra:
 - https://connect.microsoft.com/IE/feedback/details/752391 (escape U+0022 QUOTATION MARK)
 - https://connect.microsoft.com/IE/feedback/details/752807 (CheckObjectCoercible)
 Chrome/V8:
-- http://code.google.com/p/v8/issues/detail?id=2217 (don’t escape U+0027 APOSTROPHE and < and > characters as well)
-- http://code.google.com/p/v8/issues/detail?id=2218 (CheckObjectCoercible)
+- https://code.google.com/p/v8/issues/detail?id=2217 (don’t escape U+0027 APOSTROPHE and < and > characters as well)
+- https://code.google.com/p/v8/issues/detail?id=2218 (CheckObjectCoercible)
 ES spec bugs:
 - https://bugs.ecmascript.org/show_bug.cgi?id=462 (CheckObjectCoercible)
 - https://bugs.ecmascript.org/show_bug.cgi?id=463 (escape U+0022 QUOTATION MARK)
@@ -208,7 +208,7 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <h3 id="comment-syntax"><span class="secno">7.1 </span>Comment syntax</h3>
 
-<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/comment-syntax/">http://mathias.html5.org/tests/javascript/comment-syntax/</a>.
+<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/comment-syntax/">https://mathias.html5.org/tests/javascript/comment-syntax/</a>.
 <!-- Opera bug: DSK-369203 -->
 <!-- ES spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=1471 -->
 
@@ -234,10 +234,10 @@ x; // 1</pre>
 <!--
 <h2>Identifiers</h2>
 
-<p class=status>Tests are available: <a href=http://mathias.html5.org/tests/javascript/identifiers/>http://mathias.html5.org/tests/javascript/identifiers/</a>.
+<p class=status>Tests are available: <a href=https://mathias.html5.org/tests/javascript/identifiers/>https://mathias.html5.org/tests/javascript/identifiers/</a>.
 
 Opera/Carakan: https://bugs.opera.com/browse/CORE-47441 (DSK-369398)
-Chrome/V8: http://code.google.com/p/v8/issues/detail?id=2222
+Chrome/V8: https://code.google.com/p/v8/issues/detail?id=2222
 Safari/JavaScriptCore: https://bugs.webkit.org/show_bug.cgi?id=90678
 Firefox (discussion): https://bugzilla.mozilla.org/show_bug.cgi?id=744784
 Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
@@ -263,7 +263,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <h2 id="string"><span class="secno">9 </span><code>String</code></h2>
 
-<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/string/">http://mathias.html5.org/tests/javascript/string/</a>.
+<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/string/">https://mathias.html5.org/tests/javascript/string/</a>.
 
 <p>For Web compatibility, user agents must extend the <code>String.prototype</code> object with the following extra methods.
 
@@ -419,7 +419,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <h2 id="date"><span class="secno">10 </span><code>Date</code></h2>
 
-<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/date/">http://mathias.html5.org/tests/javascript/date/</a>.
+<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/date/">https://mathias.html5.org/tests/javascript/date/</a>.
 
 <h3 id="date.utc"><span class="secno">10.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
@@ -452,7 +452,7 @@ http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 
 <h2 id="function"><span class="secno">12 </span><code>Function</code></h2>
 
-<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/function/">http://mathias.html5.org/tests/javascript/function/</a>.
+<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/function/">https://mathias.html5.org/tests/javascript/function/</a>.
 
 <h3 id="function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></h3>
 
@@ -536,7 +536,7 @@ https://connect.microsoft.com/IE/feedback/details/757992: Implement Object.proto
 https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.prototype.__proto__
 -->
 
-<p class="status">Tests are available: <a href="http://mathias.html5.org/tests/javascript/object/">http://mathias.html5.org/tests/javascript/object/</a>.
+<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/object/">https://mathias.html5.org/tests/javascript/object/</a>.
 
 <h3 id="object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
@@ -637,13 +637,13 @@ object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }
 <h2 class="no-num" id="references">References</h2>
 
 <div id="anolis-references"><dl><dt id="refsDOM">[DOM]
-<dd><cite><a href="http://dom.spec.whatwg.org/">DOM4</a></cite>, Anne van Kesteren, Aryeh Gregor and Ms2ger. W3C.
+<dd><cite><a href="https://dom.spec.whatwg.org/">DOM4</a></cite>, Anne van Kesteren, Aryeh Gregor and Ms2ger. W3C.
 
 <dt id="refsECMASCRIPT">[ECMASCRIPT]
 <dd><cite><a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript Language Specification</a></cite>. ECMA.
 
 <dt id="refsHTML">[HTML]
-<dd><cite><a href="http://www.whatwg.org/C">HTML</a></cite>, Ian Hickson. WHATWG.
+<dd><cite><a href="https://html.spec.whatwg.org/">HTML</a></cite>, Ian Hickson. WHATWG.
 
 <dt id="refsRFC2119">[RFC2119]
 <dd><cite><a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a></cite>, Scott Bradner. IETF.
@@ -673,4 +673,4 @@ Tom Schuster
 
 for their useful comments.
 
-<p>Special thanks to James Graham for collecting and documenting most of these requirements <a href="http://wiki.whatwg.org/wiki/Web_ECMAScript">on the WHATWG Wiki</a>, and Juriy ‘kangax’ Zaytsev (Юрий Зайцев) for his <a href="http://kangax.github.com/es5-compat-table/non-standard/">ECMAScript Extensions Compatibility Table</a>.
+<p>Special thanks to James Graham for collecting and documenting most of these requirements <a href="https://wiki.whatwg.org/wiki/Web_ECMAScript">on the WHATWG Wiki</a>, and Juriy ‘kangax’ Zaytsev (Юрий Зайцев) for his <a href="https://kangax.github.io/es5-compat-table/non-standard/">ECMAScript Extensions Compatibility Table</a>.
