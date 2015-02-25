@@ -93,9 +93,7 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
    <li><a href="#regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
  <li><a href="#function"><span class="secno">12 </span><code>Function</code></a>
   <ol>
-   <li><a href="#function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></a></li>
-   <li><a href="#function.prototype.caller"><span class="secno">12.2 </span><code>Function.prototype.caller</code></a></li>
-   <li><a href="#function.prototype.tostring()"><span class="secno">12.3 </span><code>Function.prototype.toString()</code></a></ol></li>
+   <li><a href="#function.prototype.tostring()"><span class="secno">12.1 </span><code>Function.prototype.toString()</code></a></ol></li>
  <li><a href="#object"><span class="secno">13 </span><code>Object</code></a>
   <ol>
    <li><a href="#object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
@@ -454,76 +452,7 @@ http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/function/">https://mathias.html5.org/tests/javascript/function/</a>.
 
-<h3 id="function.prototype.arguments"><span class="secno">12.1 </span><code>Function.prototype.arguments</code></h3>
-
-<!--
-https://bugs.ecmascript.org/show_bug.cgi?id=3113
-TODO: mutable or not? http://jon-carlos.com/projects/wtf/
--->
-
-<p>Each <code>Function</code> instance must have an <code>arguments</code> property that is equivalent to <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arguments-exotic-objects" title="The arguments object">the standard <code>arguments</code> object</a> within that function.
-
-<pre class="example">var a = function(x, y, z) {
-	return [a.arguments, a.arguments === arguments];
-};
-a(1, 2, 3); // [{ '0': 1, '1': 2, '2': 3, 'length': 3 }], true]</pre>
-
-<p>The value of a function’s <code>arguments</code> property must be <code>null</code> if it’s accessed outside the function’s inner scope.
-
-<pre class="example">var a = function(x, y, z) {
-	return a.arguments;
-};
-a(1, 2, 3); // { '0': 1, '1': 2, '2': 3, 'length': 3 }
-a.arguments; // null</pre>
-
-<p>The standard <code>arguments</code> object is not created if the identifier “<code>arguments</code>” occurs as an <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords"><code class="external" data-anolis-spec="ecmascript">Identifier</code></a> in the function’s <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions"><code class="external" data-anolis-spec="ecmascript">FormalParameterList</code></a> or occurs as an <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords"><code class="external" data-anolis-spec="ecmascript">Identifier</code></a> of a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-functions-and-scripts"><code class="external" data-anolis-spec="ecmascript">FunctionDeclaration</code></a> contained in the function code. However, even in these cases, the <code>arguments</code> property must be added to the function’s prototype.
-
-<pre class="example">var b = function(x, y, arguments) {
-	return [b.arguments, b.arguments === arguments];
-};
-b(1, 2, 3); // [{ '0': 1, '1': 2, '2': 3, 'length': 3 }, false]</pre>
-
-<p>Strict mode functions must have a non-configurable accessor property with the name <code>arguments</code> that throws a <code>TypeError</code> exception on access.
-
-<pre class="example">var a = function(x, y, z) {
-	'use strict';
-	return a.arguments;
-};
-a(1, 2, 3); // throws a TypeError</pre>
-
-<h3 id="function.prototype.caller"><span class="secno">12.2 </span><code>Function.prototype.caller</code></h3>
-
-<!--
-https://bugs.ecmascript.org/show_bug.cgi?id=3113
--->
-
-<p>Each <code>Function</code> instance must have a <code>caller</code> property that is a reference to the function that invoked the specified function.
-
-<pre class="example">var a = function() {
-	return a.caller;
-};
-var b = function() {
-	return a() === b;
-};
-b(); // true</pre>
-
-<p>The value of a function’s <code>caller</code> property must be <code>null</code> if it’s accessed outside the function’s inner scope, or if the function was invoked by top-level code.
-
-<pre class="example">var a = function() {
-	return a.caller;
-};
-a.caller; // null
-a(); // null</pre>
-
-<p>Strict mode functions must have a non-configurable accessor property with the name <code>caller</code> that throws a <code>TypeError</code> exception on access.
-
-<pre class="example">var fn = function(x, y, z) {
-	'use strict';
-	return fn.caller;
-};
-fn(); // throws a TypeError</pre>
-
-<h3 id="function.prototype.tostring()"><span class="secno">12.3 </span><code>Function.prototype.toString()</code></h3>
+<h3 id="function.prototype.tostring()"><span class="secno">12.1 </span><code>Function.prototype.toString()</code></h3>
 
 TODO
 <!-- https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function.prototype.tostring leaves everything up to the implementation -->
