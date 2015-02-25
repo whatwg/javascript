@@ -1,5 +1,5 @@
 {
-  "url": "http://tools.ietf.org/html/rfc2616/#",
+  "url": "https://tools.ietf.org/html/rfc2616/#",
   "definitions": {
     "delta-seconds" : "section-3.3.2",
     "entity body" : "section-7.2",

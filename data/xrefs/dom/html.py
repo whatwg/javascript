@@ -6,7 +6,7 @@ except ImportError:
     import simplejson as json
 
 # HAHAHA HACK (Reads out the first line)
-multipageData = json.loads(urllib2.urlopen("http://www.whatwg.org/specs/web-apps/current-work/multipage/fragment-links.js").readline()[21:-2])
+multipageData = json.loads(urllib2.urlopen("https://html.spec.whatwg.org/multipage/fragment-links.js").readline()[21:-2])
 
 localData = json.loads(open("html.json", "r").read())
 
