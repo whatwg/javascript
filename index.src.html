@@ -90,41 +90,6 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 
 <p>To clarify the semantics of certain constructs used throughout this document, it is useful to define a set of abstract operations. These abstract operations are not a part of the language, and must not be exposed to Web authors; they are only defined here to aid the specification of the semantics of the language.
 
-<h3 id=checkobjectcoercible><code>CheckObjectCoercible(<var>value</var>)</code></h3>
-
-<p>The abstract operation <code><dfn>CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <span data-anolis-spec=ecmascript title=CheckObjectCoercible()>It is defined in the ECMAScript specification.</span>
-
-<h3 id=escapeattributevalue><code>EscapeAttributeValue(<var>value</var>)</code></h3>
-
-<p>The abstract operation <code><dfn>EscapeAttributeValue</dfn>(<var>value</var>)</code> produces a string suitable for use in an HTML attribute value wrapped in double quotes. <span data-anolis-ref>HTML</span> This is done according to the following algorithm:
-
-<!--
-Firefox, Opera and IE don’t escape the quotation marks at all, which is a potential security issue: http://krijnhoetmer.nl/irc-logs/whatwg/20120620#l-567
-Opera/Carakan: https://bugs.opera.com/browse/CORE-47348 (DSK-369206/CORE-47348)
-Firefox/Spidermonkey: https://bugzilla.mozilla.org/show_bug.cgi?id=352437
-Safari/JavaScriptCore:
-- https://bugs.webkit.org/show_bug.cgi?id=90667 (escape U+0022 QUOTATION MARK)
-- https://bugs.webkit.org/show_bug.cgi?id=64677 (CheckObjectCoercible)
-IE/Chakra:
-- https://connect.microsoft.com/IE/feedback/details/752283 (lowercase tagnames)
-- https://connect.microsoft.com/IE/feedback/details/752391 (escape U+0022 QUOTATION MARK)
-- https://connect.microsoft.com/IE/feedback/details/752807 (CheckObjectCoercible)
-Chrome/V8:
-- https://code.google.com/p/v8/issues/detail?id=2217 (don’t escape U+0027 APOSTROPHE and < and > characters as well)
-- https://code.google.com/p/v8/issues/detail?id=2218 (CheckObjectCoercible)
-ES spec bugs:
-- https://bugs.ecmascript.org/show_bug.cgi?id=462 (CheckObjectCoercible)
-- https://bugs.ecmascript.org/show_bug.cgi?id=463 (escape U+0022 QUOTATION MARK)
-Note that U+0026 AMPERSAND must not be escaped — that would break sites that do the right thing and escape U+0022 QUOTATION MARK as &quot; and U+0026 AMPERSAND as &amp; before passing it to these methods.
--->
-
-<ol>
-	<li>Let <var>escaped</var> be <var>value</var> with each U+0022 QUOTATION MARK character replaced with the string “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B).
-	<li>Return <var>escaped</var>.
-</ol>
-
-<p class=warning>For security reasons, Web authors should not rely on any such escaping, as older, non-JavaScript-compliant implementations might not perform this operation correctly.
-
 <h3 id=iscallable><code>IsCallable(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn>IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <span data-anolis-spec=ecmascript title=IsCallable()>It is defined in the ECMAScript specification.</span>
@@ -132,15 +97,6 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 <h3 id=tostring><code>ToString(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn>ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <span data-anolis-spec=ecmascript title=ToString()>It is defined in the ECMAScript specification.</span>
-
-<h3 id=tohtml><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
-
-<p>The abstract operation <code><dfn>ToHTML</dfn>(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code> produces an HTML string, according to the following algorithm:
-
-<ol>
-	<li>If <var>attributeName</var> is undefined, return the concatenation of the strings “<code>&lt;</code>” (U+003C), <var>tagName</var>, “<code>></code>” (U+003E), <var>content</var>, “<code>&lt;/</code>” (U+003C U+002F), <var>tagName</var>, and “<code>></code>” (U+003E).
-	<li>Otherwise, return the concatenation of the strings “<code>&lt;</code>” (U+003C), <var>tagName</var>, “<code> </code>” (U+0020), <var>attributeName</var>, “<code>="</code>” (U+003D U+0022), <code title=EscapeAttributeValue>EscapeAttributeValue(<var>attributeValue</var>)</code>, “<code>"></code>” (U+0022 U+003E), <var>content</var>, “<code>&lt;/</code>” (U+003C U+002F), <var>tagName</var>, and “<code>></code>” (U+003E).
-</ol>
 
 <h2>Annex B</h2>
 

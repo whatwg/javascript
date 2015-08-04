@@ -56,11 +56,8 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
  <li><a href="#terminology"><span class="secno">3 </span>Terminology</a></li>
  <li><a href="#abstract-operations"><span class="secno">4 </span>Abstract operations</a>
   <ol>
-   <li><a href="#checkobjectcoercible"><span class="secno">4.1 </span><code>CheckObjectCoercible(<var>value</var>)</code></a></li>
-   <li><a href="#escapeattributevalue"><span class="secno">4.2 </span><code>EscapeAttributeValue(<var>value</var>)</code></a></li>
-   <li><a href="#iscallable"><span class="secno">4.3 </span><code>IsCallable(<var>value</var>)</code></a></li>
-   <li><a href="#tostring"><span class="secno">4.4 </span><code>ToString(<var>value</var>)</code></a></li>
-   <li><a href="#tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></a></ol></li>
+   <li><a href="#iscallable"><span class="secno">4.1 </span><code>IsCallable(<var>value</var>)</code></a></li>
+   <li><a href="#tostring"><span class="secno">4.2 </span><code>ToString(<var>value</var>)</code></a></ol></li>
  <li><a href="#annex-b"><span class="secno">5 </span>Annex B</a></li>
  <li><a href="#unicode-database-version"><span class="secno">6 </span>Unicode database version</a></li>
  <li><a href="#top-level-var-statements"><span class="secno">7 </span>Top-level <code>var</code> statements</a></li>
@@ -123,57 +120,13 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 
 <p>To clarify the semantics of certain constructs used throughout this document, it is useful to define a set of abstract operations. These abstract operations are not a part of the language, and must not be exposed to Web authors; they are only defined here to aid the specification of the semantics of the language.
 
-<h3 id="checkobjectcoercible"><span class="secno">4.1 </span><code>CheckObjectCoercible(<var>value</var>)</code></h3>
-
-<p>The abstract operation <code><dfn id="checkobjectcoercible-0">CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-checkobjectcoercible" title="CheckObjectCoercible()">It is defined in the ECMAScript specification.</a>
-
-<h3 id="escapeattributevalue"><span class="secno">4.2 </span><code>EscapeAttributeValue(<var>value</var>)</code></h3>
-
-<p>The abstract operation <code><dfn id="escapeattributevalue-0">EscapeAttributeValue</dfn>(<var>value</var>)</code> produces a string suitable for use in an HTML attribute value wrapped in double quotes. <a href="#refsHTML">[HTML]</a> This is done according to the following algorithm:
-
-<!--
-Firefox, Opera and IE don’t escape the quotation marks at all, which is a potential security issue: http://krijnhoetmer.nl/irc-logs/whatwg/20120620#l-567
-Opera/Carakan: https://bugs.opera.com/browse/CORE-47348 (DSK-369206/CORE-47348)
-Firefox/Spidermonkey: https://bugzilla.mozilla.org/show_bug.cgi?id=352437
-Safari/JavaScriptCore:
-- https://bugs.webkit.org/show_bug.cgi?id=90667 (escape U+0022 QUOTATION MARK)
-- https://bugs.webkit.org/show_bug.cgi?id=64677 (CheckObjectCoercible)
-IE/Chakra:
-- https://connect.microsoft.com/IE/feedback/details/752283 (lowercase tagnames)
-- https://connect.microsoft.com/IE/feedback/details/752391 (escape U+0022 QUOTATION MARK)
-- https://connect.microsoft.com/IE/feedback/details/752807 (CheckObjectCoercible)
-Chrome/V8:
-- https://code.google.com/p/v8/issues/detail?id=2217 (don’t escape U+0027 APOSTROPHE and < and > characters as well)
-- https://code.google.com/p/v8/issues/detail?id=2218 (CheckObjectCoercible)
-ES spec bugs:
-- https://bugs.ecmascript.org/show_bug.cgi?id=462 (CheckObjectCoercible)
-- https://bugs.ecmascript.org/show_bug.cgi?id=463 (escape U+0022 QUOTATION MARK)
-Note that U+0026 AMPERSAND must not be escaped — that would break sites that do the right thing and escape U+0022 QUOTATION MARK as &quot; and U+0026 AMPERSAND as &amp; before passing it to these methods.
--->
-
-<ol>
-	<li>Let <var>escaped</var> be <var>value</var> with each U+0022 QUOTATION MARK character replaced with the string “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B).
-	<li>Return <var>escaped</var>.
-</ol>
-
-<p class="warning">For security reasons, Web authors should not rely on any such escaping, as older, non-JavaScript-compliant implementations might not perform this operation correctly.
-
-<h3 id="iscallable"><span class="secno">4.3 </span><code>IsCallable(<var>value</var>)</code></h3>
+<h3 id="iscallable"><span class="secno">4.1 </span><code>IsCallable(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-iscallable" title="IsCallable()">It is defined in the ECMAScript specification.</a>
 
-<h3 id="tostring"><span class="secno">4.4 </span><code>ToString(<var>value</var>)</code></h3>
+<h3 id="tostring"><span class="secno">4.2 </span><code>ToString(<var>value</var>)</code></h3>
 
 <p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-tostring" title="ToString()">It is defined in the ECMAScript specification.</a>
-
-<h3 id="tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
-
-<p>The abstract operation <code><dfn id="tohtml-0">ToHTML</dfn>(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code> produces an HTML string, according to the following algorithm:
-
-<ol>
-	<li>If <var>attributeName</var> is undefined, return the concatenation of the strings “<code>&lt;</code>” (U+003C), <var>tagName</var>, “<code>&gt;</code>” (U+003E), <var>content</var>, “<code>&lt;/</code>” (U+003C U+002F), <var>tagName</var>, and “<code>&gt;</code>” (U+003E).
-	<li>Otherwise, return the concatenation of the strings “<code>&lt;</code>” (U+003C), <var>tagName</var>, “<code> </code>” (U+0020), <var>attributeName</var>, “<code>="</code>” (U+003D U+0022), <a href="#escapeattributevalue-0"><code title="EscapeAttributeValue">EscapeAttributeValue(<var>attributeValue</var>)</code></a>, “<code>"&gt;</code>” (U+0022 U+003E), <var>content</var>, “<code>&lt;/</code>” (U+003C U+002F), <var>tagName</var>, and “<code>&gt;</code>” (U+003E).
-</ol>
 
 <h2 id="annex-b"><span class="secno">5 </span>Annex B</h2>
 
@@ -182,31 +135,6 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 <h2 id="unicode-database-version"><span class="secno">6 </span>Unicode database version</h2>
 
 <p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are allowed in <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-names-and-keywords" title="Identifier"><code>Identifier</code>s</a> and <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-names-and-keywords" title="IdentifierName"><code>IdentifierName</code>s</a>, and which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-white-space" title="Whitespace">whitespace characters</a>. <a href="#refsUNICODE">[UNICODE]</a>
-
-<!--
-<h2>Identifiers</h2>
-
-<p class=status>Tests are available: <a href=https://mathias.html5.org/tests/javascript/identifiers/>https://mathias.html5.org/tests/javascript/identifiers/</a>.
-
-Opera/Carakan: https://bugs.opera.com/browse/CORE-47441 (DSK-369398)
-Chrome/V8: https://code.google.com/p/v8/issues/detail?id=2222
-Safari/JavaScriptCore: https://bugs.webkit.org/show_bug.cgi?id=90678
-Firefox (discussion): https://bugzilla.mozilla.org/show_bug.cgi?id=744784
-Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
--->
-<!--
-<h3>Escaped reserved words</h3>
-
-<p class=note>This doesn’t seem to be a strong compatibility requirement, as Firefox and IE don’t have this functionality (anymore). Hopefully, it can be removed from all engines. In that case, it will be removed from this document, as well.
-
-<p>JavaScript implementations must support <span data-anolis-spec=ecmascript title=Identifier>ECMAScript identifiers</span> that unescape to a reserved word, as long as at least one character is escaped using a <span data-anolis-spec=ecmascript>Unicode escape sequence</span>.
-
-<p class=example>For example, <code>var var;</code> throws a syntax error, but e.g. <code>var v\u0061r;</code> works fine.
-
-<p>Subsequent use of such identifiers must also have at least one character escaped (otherwise the reserved word will be used instead), but it doesn’t have to be the same character(s) that were originally used to create the identifier.
-
-<p class=example>For example, <code>var v\u0061r = 42; alert(va\u0072);</code> alerts <code>42</code>.
--->
 
 <h2 id="top-level-var-statements"><span class="secno">7 </span>Top-level <code>var</code> statements</h2>
 
