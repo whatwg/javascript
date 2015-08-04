@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="https://www.whatwg.org/"><img alt="WHATWG" height="100" src="https://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-25-february-2015">Living Standard — 25 February 2015</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-4-august-2015">Living Standard — 4 August 2015</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="https://javascript.spec.whatwg.org/">https://javascript.spec.whatwg.org/</a>
@@ -39,7 +39,7 @@
 <p class="copyright"><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-25 February 2015, the editor has made this specification available
+4 August 2015, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -63,43 +63,40 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
    <li><a href="#tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></a></ol></li>
  <li><a href="#annex-b"><span class="secno">5 </span>Annex B</a></li>
  <li><a href="#unicode-database-version"><span class="secno">6 </span>Unicode database version</a></li>
- <li><a href="#syntax"><span class="secno">7 </span>Syntax</a>
+ <li><a href="#top-level-var-statements"><span class="secno">7 </span>Top-level <code>var</code> statements</a></li>
+ <li><a href="#string"><span class="secno">8 </span><code>String</code></a>
   <ol>
-   <li><a href="#comment-syntax"><span class="secno">7.1 </span>Comment syntax</a></ol></li>
- <li><a href="#top-level-var-statements"><span class="secno">8 </span>Top-level <code>var</code> statements</a></li>
- <li><a href="#string"><span class="secno">9 </span><code>String</code></a>
+   <li><a href="#string.prototype.anchor"><span class="secno">8.1 </span><code>String.prototype.anchor(<var>name</var>)</code></a></li>
+   <li><a href="#string.prototype.big"><span class="secno">8.2 </span><code>String.prototype.big()</code></a></li>
+   <li><a href="#string.prototype.blink"><span class="secno">8.3 </span><code>String.prototype.blink()</code></a></li>
+   <li><a href="#string.prototype.bold"><span class="secno">8.4 </span><code>String.prototype.bold()</code></a></li>
+   <li><a href="#string.prototype.fixed"><span class="secno">8.5 </span><code>String.prototype.fixed()</code></a></li>
+   <li><a href="#string.prototype.fontcolor"><span class="secno">8.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></a></li>
+   <li><a href="#string.prototype.fontsize"><span class="secno">8.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></a></li>
+   <li><a href="#string.prototype.italics"><span class="secno">8.8 </span><code>String.prototype.italics()</code></a></li>
+   <li><a href="#string.prototype.link"><span class="secno">8.9 </span><code>String.prototype.link(<var>href</var>)</code></a></li>
+   <li><a href="#string.prototype.small"><span class="secno">8.10 </span><code>String.prototype.small()</code></a></li>
+   <li><a href="#string.prototype.strike"><span class="secno">8.11 </span><code>String.prototype.strike()</code></a></li>
+   <li><a href="#string.prototype.sub"><span class="secno">8.12 </span><code>String.prototype.sub()</code></a></li>
+   <li><a href="#string.prototype.substr"><span class="secno">8.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></a></li>
+   <li><a href="#string.prototype.sup"><span class="secno">8.14 </span><code>String.prototype.sup()</code></a></ol></li>
+ <li><a href="#date"><span class="secno">9 </span><code>Date</code></a>
   <ol>
-   <li><a href="#string.prototype.anchor"><span class="secno">9.1 </span><code>String.prototype.anchor(<var>name</var>)</code></a></li>
-   <li><a href="#string.prototype.big"><span class="secno">9.2 </span><code>String.prototype.big()</code></a></li>
-   <li><a href="#string.prototype.blink"><span class="secno">9.3 </span><code>String.prototype.blink()</code></a></li>
-   <li><a href="#string.prototype.bold"><span class="secno">9.4 </span><code>String.prototype.bold()</code></a></li>
-   <li><a href="#string.prototype.fixed"><span class="secno">9.5 </span><code>String.prototype.fixed()</code></a></li>
-   <li><a href="#string.prototype.fontcolor"><span class="secno">9.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></a></li>
-   <li><a href="#string.prototype.fontsize"><span class="secno">9.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></a></li>
-   <li><a href="#string.prototype.italics"><span class="secno">9.8 </span><code>String.prototype.italics()</code></a></li>
-   <li><a href="#string.prototype.link"><span class="secno">9.9 </span><code>String.prototype.link(<var>href</var>)</code></a></li>
-   <li><a href="#string.prototype.small"><span class="secno">9.10 </span><code>String.prototype.small()</code></a></li>
-   <li><a href="#string.prototype.strike"><span class="secno">9.11 </span><code>String.prototype.strike()</code></a></li>
-   <li><a href="#string.prototype.sub"><span class="secno">9.12 </span><code>String.prototype.sub()</code></a></li>
-   <li><a href="#string.prototype.substr"><span class="secno">9.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></a></li>
-   <li><a href="#string.prototype.sup"><span class="secno">9.14 </span><code>String.prototype.sup()</code></a></ol></li>
- <li><a href="#date"><span class="secno">10 </span><code>Date</code></a>
+   <li><a href="#date.utc"><span class="secno">9.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
+ <li><a href="#regexp"><span class="secno">10 </span><code>RegExp</code></a>
   <ol>
-   <li><a href="#date.utc"><span class="secno">10.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
- <li><a href="#regexp"><span class="secno">11 </span><code>RegExp</code></a>
+   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">10.1 </span>Octal escapes in regular expression literals</a></li>
+   <li><a href="#regexp.$n"><span class="secno">10.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
+   <li><a href="#regexp.lastmatch"><span class="secno">10.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
+ <li><a href="#function"><span class="secno">11 </span><code>Function</code></a>
   <ol>
-   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">11.1 </span>Octal escapes in regular expression literals</a></li>
-   <li><a href="#regexp.$n"><span class="secno">11.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
-   <li><a href="#regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
- <li><a href="#function"><span class="secno">12 </span><code>Function</code></a>
+   <li><a href="#function.prototype.tostring()"><span class="secno">11.1 </span><code>Function.prototype.toString()</code></a></ol></li>
+ <li><a href="#object"><span class="secno">12 </span><code>Object</code></a>
   <ol>
-   <li><a href="#function.prototype.tostring()"><span class="secno">12.1 </span><code>Function.prototype.toString()</code></a></ol></li>
- <li><a href="#object"><span class="secno">13 </span><code>Object</code></a>
-  <ol>
-   <li><a href="#object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__definesetter__"><span class="secno">13.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">13.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">13.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></ol></li>
+   <li><a href="#object.prototype.__definegetter__"><span class="secno">12.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
+   <li><a href="#object.prototype.__definesetter__"><span class="secno">12.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
+   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">12.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
+   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">12.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -144,7 +141,7 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 
 <h3 id="checkobjectcoercible"><span class="secno">4.1 </span><code>CheckObjectCoercible(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="checkobjectcoercible-0">CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-checkobjectcoercible" title="CheckObjectCoercible()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="checkobjectcoercible-0">CheckObjectCoercible</dfn>(<var>value</var>)</code> throws an error if its argument is a value that cannot be converted to an object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-checkobjectcoercible" title="CheckObjectCoercible()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="escapeattributevalue"><span class="secno">4.2 </span><code>EscapeAttributeValue(<var>value</var>)</code></h3>
 
@@ -179,11 +176,11 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <h3 id="iscallable"><span class="secno">4.3 </span><code>IsCallable(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iscallable" title="IsCallable()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-iscallable" title="IsCallable()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="tostring"><span class="secno">4.4 </span><code>ToString(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tostring" title="ToString()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-tostring" title="ToString()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="tohtml"><span class="secno">4.5 </span><code>ToHTML(<var>tagName</var>, <var>content</var>, <var>attributeName</var>, <var>attributeValue</var>)</code></h3>
 
@@ -196,38 +193,11 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <h2 id="annex-b"><span class="secno">5 </span>Annex B</h2>
 
-<p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>.
+<p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>.
 
 <h2 id="unicode-database-version"><span class="secno">6 </span>Unicode database version</h2>
 
-<p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are allowed in <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords" title="Identifier"><code>Identifier</code>s</a> and <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-names-and-keywords" title="IdentifierName"><code>IdentifierName</code>s</a>, and which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-white-space" title="Whitespace">whitespace characters</a>. <a href="#refsUNICODE">[UNICODE]</a>
-
-<h2 id="syntax"><span class="secno">7 </span>Syntax</h2>
-
-<h3 id="comment-syntax"><span class="secno">7.1 </span>Comment syntax</h3>
-
-<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/comment-syntax/">https://mathias.html5.org/tests/javascript/comment-syntax/</a>.
-<!-- Opera bug: DSK-369203 -->
-<!-- ES spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=1471 -->
-
-<p><code>&lt;!--</code> must be treated as the start of a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-comments"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
-
-<pre class="example">var x = true;
-&lt;!-- x = false; // note: no syntax error
-x; // true</pre>
-
-<p><code>--&gt;</code> at the start of a line, optionally preceded by <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-white-space">whitespace</a> or <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-comments" title="MultiLineComment"><code>MultiLineComment</code>s</a>, must be treated as a <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-comments"><code class="external" data-anolis-spec="ecmascript">SingleLineComment</code></a> — equivalent to <code>//</code>.
-
-<pre class="example">var x = true;
---&gt; x = false; // note: no syntax error
-x; // true</pre>
-
-<pre class="example">var x = 1;
-/*
-multiline comment!
-x = 2;
-*/ --&gt; x = 3;
-x; // 1</pre>
+<p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are allowed in <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-names-and-keywords" title="Identifier"><code>Identifier</code>s</a> and <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-names-and-keywords" title="IdentifierName"><code>IdentifierName</code>s</a>, and which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-white-space" title="Whitespace">whitespace characters</a>. <a href="#refsUNICODE">[UNICODE]</a>
 
 <!--
 <h2>Identifiers</h2>
@@ -254,12 +224,12 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 <p class=example>For example, <code>var v\u0061r = 42; alert(va\u0072);</code> alerts <code>42</code>.
 -->
 
-<h2 id="top-level-var-statements"><span class="secno">8 </span>Top-level <code>var</code> statements</h2>
+<h2 id="top-level-var-statements"><span class="secno">7 </span>Top-level <code>var</code> statements</h2>
 
 <!-- TODO -->
 <p>The erratum in <a href="https://bugs.ecmascript.org/show_bug.cgi?id=78#c0">https://bugs.ecmascript.org/show_bug.cgi?id=78#c0</a> must be followed so that <code>var</code> statements at the top level of scripts can shadow any properties from the global object’s prototype chain.
 
-<h2 id="string"><span class="secno">9 </span><code>String</code></h2>
+<h2 id="string"><span class="secno">8 </span><code>String</code></h2>
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/string/">https://mathias.html5.org/tests/javascript/string/</a>.
 
@@ -267,7 +237,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>These methods are all generic, meaning the <code>this</code> argument need not be a <code>String</code> object.
 
-<h3 id="string.prototype.anchor"><span class="secno">9.1 </span><code>String.prototype.anchor(<var>name</var>)</code></h3>
+<h3 id="string.prototype.anchor"><span class="secno">8.1 </span><code>String.prototype.anchor(<var>name</var>)</code></h3>
 
 <!-- WebKit & IE don’t perform the CheckObjectCoercible step. -->
 
@@ -282,7 +252,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>name</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.big"><span class="secno">9.2 </span><code>String.prototype.big()</code></h3>
+<h3 id="string.prototype.big"><span class="secno">8.2 </span><code>String.prototype.big()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -292,7 +262,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>big</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.blink"><span class="secno">9.3 </span><code>String.prototype.blink()</code></h3>
+<h3 id="string.prototype.blink"><span class="secno">8.3 </span><code>String.prototype.blink()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -302,7 +272,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>blink</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.bold"><span class="secno">9.4 </span><code>String.prototype.bold()</code></h3>
+<h3 id="string.prototype.bold"><span class="secno">8.4 </span><code>String.prototype.bold()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -312,7 +282,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>bold</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.fixed"><span class="secno">9.5 </span><code>String.prototype.fixed()</code></h3>
+<h3 id="string.prototype.fixed"><span class="secno">8.5 </span><code>String.prototype.fixed()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -322,7 +292,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>fixed</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.fontcolor"><span class="secno">9.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></h3>
+<h3 id="string.prototype.fontcolor"><span class="secno">8.6 </span><code>String.prototype.fontcolor(<var>color</var>)</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -335,7 +305,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>color</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.fontsize"><span class="secno">9.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></h3>
+<h3 id="string.prototype.fontsize"><span class="secno">8.7 </span><code>String.prototype.fontsize(<var>size</var>)</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -348,7 +318,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>size</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.italics"><span class="secno">9.8 </span><code>String.prototype.italics()</code></h3>
+<h3 id="string.prototype.italics"><span class="secno">8.8 </span><code>String.prototype.italics()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -358,7 +328,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>italics</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.link"><span class="secno">9.9 </span><code>String.prototype.link(<var>href</var>)</code></h3>
+<h3 id="string.prototype.link"><span class="secno">8.9 </span><code>String.prototype.link(<var>href</var>)</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -371,7 +341,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p class="warning">The use of this method is not recommended for Web authors; DOM APIs should be used instead. <a href="#refsDOM">[DOM]</a> <a href="#refsHTML">[HTML]</a> However, if this method is used nevertheless, the characters <code>&amp;</code> and <code>"</code> in the value of the <var>href</var> argument should be escaped as “<code>&amp;amp;</code>” (U+0026 U+0061 U+006D U+0070 U+003B) and “<code>&amp;quot;</code>” (U+0026 U+0071 U+0075 U+006F U+0074 U+003B), respectively.
 
-<h3 id="string.prototype.small"><span class="secno">9.10 </span><code>String.prototype.small()</code></h3>
+<h3 id="string.prototype.small"><span class="secno">8.10 </span><code>String.prototype.small()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -381,7 +351,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>small</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.strike"><span class="secno">9.11 </span><code>String.prototype.strike()</code></h3>
+<h3 id="string.prototype.strike"><span class="secno">8.11 </span><code>String.prototype.strike()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -391,7 +361,7 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>strike</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.sub"><span class="secno">9.12 </span><code>String.prototype.sub()</code></h3>
+<h3 id="string.prototype.sub"><span class="secno">8.12 </span><code>String.prototype.sub()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -401,11 +371,11 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>sub</code> method is <code>0</code>.</p>
 
-<h3 id="string.prototype.substr"><span class="secno">9.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
+<h3 id="string.prototype.substr"><span class="secno">8.13 </span><code>String.prototype.substr(<var>start</var>, <var>length</var>)</code></h3>
 
-<a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-string.prototype.substr" title="String.prototype.substr()">This method is defined in Annex B.2.3 of the ECMAScript specification.</a> Although this section is non-normative, user agents must implement it for Web compatibility.
+<a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-string.prototype.substr" title="String.prototype.substr()">This method is defined in Annex B.2.3 of the ECMAScript specification.</a> Although this section is non-normative, user agents must implement it for Web compatibility.
 
-<h3 id="string.prototype.sup"><span class="secno">9.14 </span><code>String.prototype.sup()</code></h3>
+<h3 id="string.prototype.sup"><span class="secno">8.14 </span><code>String.prototype.sup()</code></h3>
 
 <ol>
 	<li>Call <a href="#checkobjectcoercible-0"><code title="CheckObjectCoercible">CheckObjectCoercible(<var>this</var>)</code></a>.
@@ -415,49 +385,49 @@ Spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=277
 
 <p>The <code>length</code> property of the <code>sup</code> method is <code>0</code>.</p>
 
-<h2 id="date"><span class="secno">10 </span><code>Date</code></h2>
+<h2 id="date"><span class="secno">9 </span><code>Date</code></h2>
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/date/">https://mathias.html5.org/tests/javascript/date/</a>.
 
-<h3 id="date.utc"><span class="secno">10.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
+<h3 id="date.utc"><span class="secno">9.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
-<p>When called with fewer than two arguments, <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
+<p>When called with fewer than two arguments, <a href="http://ecma-international.org/ecma-262/6.0/#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
 
 <!--
 https://bugs.ecmascript.org/show_bug.cgi?id=3112
 https://bugzilla.mozilla.org/show_bug.cgi?id=1050755
 -->
 
-<h2 id="regexp"><span class="secno">11 </span><code>RegExp</code></h2>
+<h2 id="regexp"><span class="secno">10 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">11.1 </span>Octal escapes in regular expression literals</h3>
+<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">10.1 </span>Octal escapes in regular expression literals</h3>
 
-<p>The <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
+<p>The <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
 
 <pre class="example">/\123/.test('S'); // true</pre>
 
-<h3 id="regexp.$n"><span class="secno">11.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
+<h3 id="regexp.$n"><span class="secno">10.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
 
 <p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
 
-<h3 id="regexp.lastmatch"><span class="secno">11.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
+<h3 id="regexp.lastmatch"><span class="secno">10.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
 
 <!-- TODO:
 https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
 http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 -->
 
-<h2 id="function"><span class="secno">12 </span><code>Function</code></h2>
+<h2 id="function"><span class="secno">11 </span><code>Function</code></h2>
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/function/">https://mathias.html5.org/tests/javascript/function/</a>.
 
-<h3 id="function.prototype.tostring()"><span class="secno">12.1 </span><code>Function.prototype.toString()</code></h3>
+<h3 id="function.prototype.tostring()"><span class="secno">11.1 </span><code>Function.prototype.toString()</code></h3>
 
 TODO
-<!-- https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function.prototype.tostring leaves everything up to the implementation -->
+<!-- http://ecma-international.org/ecma-262/6.0/#sec-function.prototype.tostring leaves everything up to the implementation -->
 
-<h2 id="object"><span class="secno">13 </span><code>Object</code></h2>
+<h2 id="object"><span class="secno">12 </span><code>Object</code></h2>
 
 <!--
 https://bugs.webkit.org/show_bug.cgi?id=93873: Object#__define{G,S}etter__ should throw TypeError if IsCallable(function) is false
@@ -467,7 +437,7 @@ https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.proto
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/object/">https://mathias.html5.org/tests/javascript/object/</a>.
 
-<h3 id="object.prototype.__definegetter__"><span class="secno">13.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+<h3 id="object.prototype.__definegetter__"><span class="secno">12.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__definegetter__"><code>__defineGetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is accessed.
 
@@ -475,7 +445,7 @@ https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.proto
 	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
 	<li>Let <var>obj</var> be <var>this</var>.
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the internal <a href="http://ecma-international.org/ecma-262/6.0/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
 	<li>Whenever a property with the name of <var>prop</var> is accessed on the <var>obj</var> object, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, and return the result.
 	<li>Whenever the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
 	<li>Return <code>undefined</code>.
@@ -497,7 +467,7 @@ myDate.year; // 2012</pre>
 
 <p>The <code>length</code> property of the <a href="#__definegetter__"><code>__defineGetter__</code></a> method is <code>2</code>.</p>
 
-<h3 id="object.prototype.__definesetter__"><span class="secno">13.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+<h3 id="object.prototype.__definesetter__"><span class="secno">12.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__definesetter__"><code>__defineSetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is set.
 
@@ -505,7 +475,7 @@ myDate.year; // 2012</pre>
 	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
 	<li>Let <var>obj</var> be <var>this</var>.
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the internal <a href="http://ecma-international.org/ecma-262/6.0/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
 	<li>Set the <var>prop</var> property on the <var>obj</var> object to <code>undefined</code>.
 	<li>Whenever a property with the name of <var>prop</var> is set to a value <var>val</var> on the <var>obj</var> object, instead of setting the <var>prop</var> property to <var>val</var>, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, passing <var>val</var> as its first argument.
 	<li>Whenever the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
@@ -530,7 +500,7 @@ myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
 
 <p>The <code>length</code> property of the <a href="#__definesetter__"><code>__defineSetter__</code></a> method is <code>2</code>.</p>
 
-<h3 id="object.prototype.__lookupgetter__"><span class="secno">13.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
+<h3 id="object.prototype.__lookupgetter__"><span class="secno">12.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
 
 <!--
 # [12:49] <jgraham> matjas: __lookupGetter__ and friends probably want to be defined in terms of AccessorDescriptors as per ES5
@@ -541,7 +511,7 @@ myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
 
 <ol>
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initializer" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
+	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-object-initializer" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
 </ol>
 
 <pre class="example">var object = { get foo() { return 1; } };
@@ -549,13 +519,13 @@ object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
 
 <p>The <code>length</code> property of the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method is <code>1</code>.</p>
 
-<h3 id="object.prototype.__lookupsetter__"><span class="secno">13.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
+<h3 id="object.prototype.__lookupsetter__"><span class="secno">12.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__lookupsetter__"><code>__lookupSetter__</code></dfn> method that implements the following algorithm:
 
 <ol>
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initializer" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
+	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-object-initializer" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
 </ol>
 
 <pre class="example">var object = { set foo(value) { this.bar = value * 2; } };
@@ -569,7 +539,7 @@ object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }
 <dd><cite><a href="https://dom.spec.whatwg.org/">DOM4</a></cite>, Anne van Kesteren, Aryeh Gregor and Ms2ger. W3C.
 
 <dt id="refsECMASCRIPT">[ECMASCRIPT]
-<dd><cite><a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript Language Specification</a></cite>. ECMA.
+<dd><cite><a href="http://ecma-international.org/ecma-262/6.0/">ECMAScript Language Specification</a></cite>. ECMA.
 
 <dt id="refsHTML">[HTML]
 <dd><cite><a href="https://html.spec.whatwg.org/">HTML</a></cite>, Ian Hickson. WHATWG.
@@ -589,6 +559,7 @@ object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }
 Anne van Kesteren,
 Aryeh Gregor,
 David Håsäther,
+Domenic Denicola,
 James Graham,
 John-David Dalton,
 Masatoshi Kimura,

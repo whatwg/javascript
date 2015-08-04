@@ -150,33 +150,6 @@ Note that U+0026 AMPERSAND must not be escaped — that would break sites that d
 
 <p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <span title="ECMAScript character">ECMAScript characters</span> are allowed in <span data-anolis-spec=ecmascript title=Identifier><code>Identifier</code>s</span> and <span data-anolis-spec=ecmascript title=IdentifierName><code>IdentifierName</code>s</span>, and which <span title="ECMAScript character">ECMAScript characters</span> are <span data-anolis-spec=ecmascript title=Whitespace>whitespace characters</span>. <span data-anolis-ref>UNICODE</span>
 
-<h2>Syntax</h2>
-
-<h3>Comment syntax</h3>
-
-<p class=status>Tests are available: <a href=https://mathias.html5.org/tests/javascript/comment-syntax/>https://mathias.html5.org/tests/javascript/comment-syntax/</a>.
-<!-- Opera bug: DSK-369203 -->
-<!-- ES spec bug: https://bugs.ecmascript.org/show_bug.cgi?id=1471 -->
-
-<p><code>&lt;!--</code> must be treated as the start of a <code data-anolis-spec=ecmascript>SingleLineComment</code> — equivalent to <code>//</code>.
-
-<pre class=example>var x = true;
-&lt;!-- x = false; // note: no syntax error
-x; // true</pre>
-
-<p><code>--></code> at the start of a line, optionally preceded by <span data-anolis-spec=ecmascript>whitespace</span> or <span data-anolis-spec=ecmascript title=MultiLineComment><code>MultiLineComment</code>s</span>, must be treated as a <code data-anolis-spec=ecmascript>SingleLineComment</code> — equivalent to <code>//</code>.
-
-<pre class=example>var x = true;
---> x = false; // note: no syntax error
-x; // true</pre>
-
-<pre class=example>var x = 1;
-/*
-multiline comment!
-x = 2;
-*/ --> x = 3;
-x; // 1</pre>
-
 <!--
 <h2>Identifiers</h2>
 
@@ -403,7 +376,7 @@ http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 <h3><code>Function.prototype.toString()</code></h3>
 
 TODO
-<!-- https://people.mozilla.org/~jorendorff/es6-draft.html#sec-function.prototype.tostring leaves everything up to the implementation -->
+<!-- http://ecma-international.org/ecma-262/6.0/#sec-function.prototype.tostring leaves everything up to the implementation -->
 
 <h2><code>Object</code></h2>
 
@@ -522,6 +495,7 @@ object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }
 Anne van Kesteren,
 Aryeh Gregor,
 David Håsäther,
+Domenic Denicola,
 James Graham,
 John-David Dalton,
 Masatoshi Kimura,
