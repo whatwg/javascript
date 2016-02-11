@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="https://www.whatwg.org/"><img alt="WHATWG" height="100" src="https://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-5-january-2016">Living Standard — 5 January 2016</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-11-february-2016">Living Standard — 11 February 2016</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="https://javascript.spec.whatwg.org/">https://javascript.spec.whatwg.org/</a>
@@ -39,7 +39,7 @@
 <p class="copyright"><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-5 January 2016, the editor has made this specification available
+11 February 2016, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -59,24 +59,23 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
    <li><a href="#iscallable"><span class="secno">4.1 </span><code>IsCallable(<var>value</var>)</code></a></li>
    <li><a href="#tostring"><span class="secno">4.2 </span><code>ToString(<var>value</var>)</code></a></ol></li>
  <li><a href="#annex-b"><span class="secno">5 </span>Annex B</a></li>
- <li><a href="#unicode-database-version"><span class="secno">6 </span>Unicode database version</a></li>
- <li><a href="#date"><span class="secno">7 </span><code>Date</code></a>
+ <li><a href="#date"><span class="secno">6 </span><code>Date</code></a>
   <ol>
-   <li><a href="#date.utc"><span class="secno">7.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
- <li><a href="#regexp"><span class="secno">8 </span><code>RegExp</code></a>
+   <li><a href="#date.utc"><span class="secno">6.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
+ <li><a href="#regexp"><span class="secno">7 </span><code>RegExp</code></a>
   <ol>
-   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">8.1 </span>Octal escapes in regular expression literals</a></li>
-   <li><a href="#regexp.$n"><span class="secno">8.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
-   <li><a href="#regexp.lastmatch"><span class="secno">8.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
- <li><a href="#function"><span class="secno">9 </span><code>Function</code></a>
+   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">7.1 </span>Octal escapes in regular expression literals</a></li>
+   <li><a href="#regexp.$n"><span class="secno">7.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
+   <li><a href="#regexp.lastmatch"><span class="secno">7.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
+ <li><a href="#function"><span class="secno">8 </span><code>Function</code></a>
   <ol>
-   <li><a href="#function.prototype.tostring()"><span class="secno">9.1 </span><code>Function.prototype.toString()</code></a></ol></li>
- <li><a href="#object"><span class="secno">10 </span><code>Object</code></a>
+   <li><a href="#function.prototype.tostring()"><span class="secno">8.1 </span><code>Function.prototype.toString()</code></a></ol></li>
+ <li><a href="#object"><span class="secno">9 </span><code>Object</code></a>
   <ol>
-   <li><a href="#object.prototype.__definegetter__"><span class="secno">10.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__definesetter__"><span class="secno">10.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">10.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">10.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></ol></li>
+   <li><a href="#object.prototype.__definegetter__"><span class="secno">9.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
+   <li><a href="#object.prototype.__definesetter__"><span class="secno">9.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
+   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">9.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
+   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">9.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -121,63 +120,59 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 
 <h3 id="iscallable"><span class="secno">4.1 </span><code>IsCallable(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-iscallable" title="IsCallable()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="iscallable-0">IsCallable</dfn>(<var>value</var>)</code> determines if its argument is a callable function object. <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-iscallable" title="IsCallable()">It is defined in the ECMAScript specification.</a>
 
 <h3 id="tostring"><span class="secno">4.2 </span><code>ToString(<var>value</var>)</code></h3>
 
-<p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-tostring" title="ToString()">It is defined in the ECMAScript specification.</a>
+<p>The abstract operation <code><dfn id="tostring-0">ToString</dfn>(<var>value</var>)</code> converts its argument to a value of type <code>String</code>. <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-tostring" title="ToString()">It is defined in the ECMAScript specification.</a>
 
 <h2 id="annex-b"><span class="secno">5 </span>Annex B</h2>
 
-<p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>.
+<p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>.
 
-<h2 id="unicode-database-version"><span class="secno">6 </span>Unicode database version</h2>
-
-<p>For optimal interoperability, JavaScript implementations should use the latest available Unicode database to determine which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are allowed in <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-names-and-keywords" title="Identifier"><code>Identifier</code>s</a> and <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-names-and-keywords" title="IdentifierName"><code>IdentifierName</code>s</a>, and which <a href="#ecmascript-character" title="ECMAScript character">ECMAScript characters</a> are <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-white-space" title="Whitespace">whitespace characters</a>. <a href="#refsUNICODE">[UNICODE]</a>
-
-<h2 id="date"><span class="secno">7 </span><code>Date</code></h2>
+<h2 id="date"><span class="secno">6 </span><code>Date</code></h2>
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/date/">https://mathias.html5.org/tests/javascript/date/</a>.
 
-<h3 id="date.utc"><span class="secno">7.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
+<h3 id="date.utc"><span class="secno">6.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
 
-<p>When called with fewer than two arguments, <a href="http://ecma-international.org/ecma-262/6.0/#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
+<p>When called with fewer than two arguments, <a href="https://tc39.github.io/ecma262/#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
 
 <!--
 https://bugs.ecmascript.org/show_bug.cgi?id=3112
 https://bugzilla.mozilla.org/show_bug.cgi?id=1050755
 -->
 
-<h2 id="regexp"><span class="secno">8 </span><code>RegExp</code></h2>
+<h2 id="regexp"><span class="secno">7 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">8.1 </span>Octal escapes in regular expression literals</h3>
+<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">7.1 </span>Octal escapes in regular expression literals</h3>
 
-<p>The <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
+<p>The <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
 
 <pre class="example">/\123/.test('S'); // true</pre>
 
-<h3 id="regexp.$n"><span class="secno">8.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
+<h3 id="regexp.$n"><span class="secno">7.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
 
 <p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
 
-<h3 id="regexp.lastmatch"><span class="secno">8.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
+<h3 id="regexp.lastmatch"><span class="secno">7.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
 
 <!-- TODO:
 https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
 http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 -->
 
-<h2 id="function"><span class="secno">9 </span><code>Function</code></h2>
+<h2 id="function"><span class="secno">8 </span><code>Function</code></h2>
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/function/">https://mathias.html5.org/tests/javascript/function/</a>.
 
-<h3 id="function.prototype.tostring()"><span class="secno">9.1 </span><code>Function.prototype.toString()</code></h3>
+<h3 id="function.prototype.tostring()"><span class="secno">8.1 </span><code>Function.prototype.toString()</code></h3>
 
 TODO
 <!-- http://ecma-international.org/ecma-262/6.0/#sec-function.prototype.tostring leaves everything up to the implementation -->
 
-<h2 id="object"><span class="secno">10 </span><code>Object</code></h2>
+<h2 id="object"><span class="secno">9 </span><code>Object</code></h2>
 
 <!--
 https://bugs.webkit.org/show_bug.cgi?id=93873: Object#__define{G,S}etter__ should throw TypeError if IsCallable(function) is false
@@ -187,7 +182,7 @@ https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.proto
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/object/">https://mathias.html5.org/tests/javascript/object/</a>.
 
-<h3 id="object.prototype.__definegetter__"><span class="secno">10.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+<h3 id="object.prototype.__definegetter__"><span class="secno">9.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__definegetter__"><code>__defineGetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is accessed.
 
@@ -195,7 +190,7 @@ https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.proto
 	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
 	<li>Let <var>obj</var> be <var>this</var>.
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="http://ecma-international.org/ecma-262/6.0/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the internal <a href="https://tc39.github.io/ecma262/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
 	<li>Whenever a property with the name of <var>prop</var> is accessed on the <var>obj</var> object, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, and return the result.
 	<li>Whenever the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
 	<li>Return <code>undefined</code>.
@@ -217,7 +212,7 @@ myDate.year; // 2012</pre>
 
 <p>The <code>length</code> property of the <a href="#__definegetter__"><code>__defineGetter__</code></a> method is <code>2</code>.</p>
 
-<h3 id="object.prototype.__definesetter__"><span class="secno">10.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
+<h3 id="object.prototype.__definesetter__"><span class="secno">9.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__definesetter__"><code>__defineSetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is set.
 
@@ -225,7 +220,7 @@ myDate.year; // 2012</pre>
 	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
 	<li>Let <var>obj</var> be <var>this</var>.
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="http://ecma-international.org/ecma-262/6.0/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
+	<li>Set the internal <a href="https://tc39.github.io/ecma262/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
 	<li>Set the <var>prop</var> property on the <var>obj</var> object to <code>undefined</code>.
 	<li>Whenever a property with the name of <var>prop</var> is set to a value <var>val</var> on the <var>obj</var> object, instead of setting the <var>prop</var> property to <var>val</var>, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, passing <var>val</var> as its first argument.
 	<li>Whenever the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
@@ -250,7 +245,7 @@ myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
 
 <p>The <code>length</code> property of the <a href="#__definesetter__"><code>__defineSetter__</code></a> method is <code>2</code>.</p>
 
-<h3 id="object.prototype.__lookupgetter__"><span class="secno">10.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
+<h3 id="object.prototype.__lookupgetter__"><span class="secno">9.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
 
 <!--
 # [12:49] <jgraham> matjas: __lookupGetter__ and friends probably want to be defined in terms of AccessorDescriptors as per ES5
@@ -261,7 +256,7 @@ myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
 
 <ol>
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-object-initializer" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
+	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-object-initializer" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
 </ol>
 
 <pre class="example">var object = { get foo() { return 1; } };
@@ -269,13 +264,13 @@ object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
 
 <p>The <code>length</code> property of the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method is <code>1</code>.</p>
 
-<h3 id="object.prototype.__lookupsetter__"><span class="secno">10.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
+<h3 id="object.prototype.__lookupsetter__"><span class="secno">9.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
 
 <p>Every <code>Object</code> instance must have a <dfn id="__lookupsetter__"><code>__lookupSetter__</code></dfn> method that implements the following algorithm:
 
 <ol>
 	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="http://ecma-international.org/ecma-262/6.0/#sec-object-initializer" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
+	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-object-initializer" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
 </ol>
 
 <pre class="example">var object = { set foo(value) { this.bar = value * 2; } };

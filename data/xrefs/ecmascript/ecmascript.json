@@ -28,5 +28,5 @@
 		"variabledeclaration": "sec-variable-statement",
 		"whitespace": "sec-white-space"
 	},
-	"url": "http://ecma-international.org/ecma-262/6.0/#"
+	"url": "https://tc39.github.io/ecma262/#"
 }
