@@ -129,7 +129,7 @@
   },
   "ECMASCRIPT" :
   {
-    "href" : "http://ecma-international.org/ecma-262/6.0/",
+    "href" : "https://tc39.github.io/ecma262/",
     "title" : "ECMAScript Language Specification",
     "publisher" : "ECMA"
   },
