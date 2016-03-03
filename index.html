@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="https://www.whatwg.org/"><img alt="WHATWG" height="100" src="https://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-11-february-2016">Living Standard — 11 February 2016</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-3-march-2016">Living Standard — 3 March 2016</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="https://javascript.spec.whatwg.org/">https://javascript.spec.whatwg.org/</a>
@@ -39,7 +39,7 @@
 <p class="copyright"><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-11 February 2016, the editor has made this specification available
+3 March 2016, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -70,12 +70,6 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
  <li><a href="#function"><span class="secno">8 </span><code>Function</code></a>
   <ol>
    <li><a href="#function.prototype.tostring()"><span class="secno">8.1 </span><code>Function.prototype.toString()</code></a></ol></li>
- <li><a href="#object"><span class="secno">9 </span><code>Object</code></a>
-  <ol>
-   <li><a href="#object.prototype.__definegetter__"><span class="secno">9.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__definesetter__"><span class="secno">9.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupgetter__"><span class="secno">9.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></a></li>
-   <li><a href="#object.prototype.__lookupsetter__"><span class="secno">9.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -171,112 +165,6 @@ http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 
 TODO
 <!-- http://ecma-international.org/ecma-262/6.0/#sec-function.prototype.tostring leaves everything up to the implementation -->
-
-<h2 id="object"><span class="secno">9 </span><code>Object</code></h2>
-
-<!--
-https://bugs.webkit.org/show_bug.cgi?id=93873: Object#__define{G,S}etter__ should throw TypeError if IsCallable(function) is false
-https://connect.microsoft.com/IE/feedback/details/757992: Implement Object.prototype.__define{G,S}etter__
-https://connect.microsoft.com/IE/feedback/details/757994: Implement Object.prototype.__proto__
--->
-
-<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/object/">https://mathias.html5.org/tests/javascript/object/</a>.
-
-<h3 id="object.prototype.__definegetter__"><span class="secno">9.1 </span><code>Object.prototype.__defineGetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
-
-<p>Every <code>Object</code> instance must have a <dfn id="__definegetter__"><code>__defineGetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is accessed.
-
-<ol>
-	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
-	<li>Let <var>obj</var> be <var>this</var>.
-	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="https://tc39.github.io/ecma262/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
-	<li>Whenever a property with the name of <var>prop</var> is accessed on the <var>obj</var> object, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, and return the result.
-	<li>Whenever the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
-	<li>Return <code>undefined</code>.
-</ol>
-
-<pre class="example">var object = {},
-    counter = 0;
-object.__defineGetter__('foo', function() {
-	return ++counter;
-});
-[object.foo, object.foo, object.foo]; // [1, 2, 3]</pre>
-
-<pre class="example">var myDate = new Date;
-myDate.__defineGetter__('year', function() {
-	return this.getFullYear();
-});
-myDate; // Sun Jul 01 2012 13:33:37 GMT+0200 (CEST)
-myDate.year; // 2012</pre>
-
-<p>The <code>length</code> property of the <a href="#__definegetter__"><code>__defineGetter__</code></a> method is <code>2</code>.</p>
-
-<h3 id="object.prototype.__definesetter__"><span class="secno">9.2 </span><code>Object.prototype.__defineSetter__(<var>propertyName</var>, <var>function</var>)</code></h3>
-
-<p>Every <code>Object</code> instance must have a <dfn id="__definesetter__"><code>__defineSetter__</code></dfn> method which binds a property of that object to a function that is called each time the property is set.
-
-<ol>
-	<li>If <a href="#iscallable-0"><code title="IsCallable">IsCallable(<var>function</var>)</code></a> is <code>false</code>, throw a <code>TypeError</code> and return; else, continue following these steps.
-	<li>Let <var>obj</var> be <var>this</var>.
-	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>Set the internal <a href="https://tc39.github.io/ecma262/#sec-property-attributes"><code class="external" data-anolis-spec="ecmascript">[[Enumerable]]</code></a> property of <var>obj</var>’s <var>prop</var> property to <code>true</code>.
-	<li>Set the <var>prop</var> property on the <var>obj</var> object to <code>undefined</code>.
-	<li>Whenever a property with the name of <var>prop</var> is set to a value <var>val</var> on the <var>obj</var> object, instead of setting the <var>prop</var> property to <var>val</var>, call <var>function</var> with the <var>this</var> binding set to <var>obj</var>, passing <var>val</var> as its first argument.
-	<li>Whenever the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method of the <var>obj</var> object is called with an argument <var>arg</var> for which <var>prop</var> is equal to <a href="#tostring-0"><code title="ToString">ToString(<var>arg</var>)</code></a>, return a reference to <var>function</var>.
-	<li>Return <code>undefined</code>.
-</ol>
-
-<pre class="example">var object = {};
-object.__defineSetter__('degrees', function(degrees) {
-	this.radians = degrees * Math.PI / 180;
-});
-object.degrees = 180;
-object.degrees; // undefined
-object.radians; // 3.141592653589793</pre>
-
-<pre class="example">var myDate = new Date;
-myDate.__defineSetter__('year', function(y) {
-	this.setFullYear(y);
-});
-myDate; // Sun Jul 01 2012 13:33:37 GMT+0200 (CEST)
-myDate.year = 1988;
-myDate; // Fri Jul 01 1988 13:33:37 GMT+0200 (CEST)</pre>
-
-<p>The <code>length</code> property of the <a href="#__definesetter__"><code>__defineSetter__</code></a> method is <code>2</code>.</p>
-
-<h3 id="object.prototype.__lookupgetter__"><span class="secno">9.3 </span><code>Object.prototype.__lookupGetter__(<var>propertyName</var>)</code></h3>
-
-<!--
-# [12:49] <jgraham> matjas: __lookupGetter__ and friends probably want to be defined in terms of AccessorDescriptors as per ES5
-# [12:51] <jgraham> Look at e.g. http://es5.github.com/#x8.7.1 for clues
--->
-
-<p>Every <code>Object</code> instance must have a <dfn id="__lookupgetter__"><code>__lookupGetter__</code></dfn> method that implements the following algorithm:
-
-<ol>
-	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a getter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definegetter__"><code>__defineGetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-object-initializer" title="Object Initializer">the <code>get</code> syntax in the object initializer</a>, return the getter function; else, return <code>undefined</code>.
-</ol>
-
-<pre class="example">var object = { get foo() { return 1; } };
-object.__lookupGetter__('foo'); // function foo() { return 1; }</pre>
-
-<p>The <code>length</code> property of the <a href="#__lookupgetter__"><code>__lookupGetter__</code></a> method is <code>1</code>.</p>
-
-<h3 id="object.prototype.__lookupsetter__"><span class="secno">9.4 </span><code>Object.prototype.__lookupSetter__(<var>propertyName</var>)</code></h3>
-
-<p>Every <code>Object</code> instance must have a <dfn id="__lookupsetter__"><code>__lookupSetter__</code></dfn> method that implements the following algorithm:
-
-<ol>
-	<li>Let <var>prop</var> be <a href="#tostring-0"><code title="ToString">ToString(<var>propertyName</var>)</code></a>.
-	<li>If a setter for the <var>prop</var> property has been defined on the <var>this</var> object through the use of <a href="#__definesetter__"><code>__defineSetter__</code></a> or <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-object-initializer" title="Object Initializer">the <code>set</code> syntax in the object initializer</a>, return the setter function; else, return <code>undefined</code>.
-</ol>
-
-<pre class="example">var object = { set foo(value) { this.bar = value * 2; } };
-object.__lookupSetter__('foo'); // function foo(value) { this.bar = value * 2; }</pre>
-
-<p>The <code>length</code> property of the <a href="#__lookupsetter__"><code>__lookupSetter__</code></a> method is <code>1</code>.</p>
 
 <h2 class="no-num" id="references">References</h2>
 
