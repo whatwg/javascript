@@ -93,12 +93,6 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 <h2><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3>Octal escapes in regular expression literals</h3>
-
-<p>The <span data-anolis-spec=ecmascript title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</span> must be supported, and must also apply to regular expression literals, even in strict mode code.
-
-<pre class=example>/\123/.test('S'); // true</pre>
-
 <h3 id=regexp.$n><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
 
 <p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
@@ -129,6 +123,7 @@ TODO
 
 Anne van Kesteren,
 Aryeh Gregor,
+Claude Pache,
 Daniel Ehrenberg,
 David Håsäther,
 Domenic Denicola,
