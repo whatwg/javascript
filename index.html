@@ -22,7 +22,7 @@
 <div class="head">
 	<p><a class="logo" href="https://www.whatwg.org/"><img alt="WHATWG" height="100" src="https://resources.whatwg.org/logo-javascript.svg" width="100"></a></p>
 	<h1>JavaScript, <abbr title="also known as">a.k.a.</abbr> Web ECMAScript</h1>
-	<h2 class="no-num no-toc" id="living-standard-—-6-march-2016">Living Standard — 6 March 2016</h2>
+	<h2 class="no-num no-toc" id="living-standard-—-22-july-2016">Living Standard — 22 July 2016</h2>
 	<dl>
 		<dt>This Version:
 			<dd><a href="https://javascript.spec.whatwg.org/">https://javascript.spec.whatwg.org/</a>
@@ -39,7 +39,7 @@
 <p class="copyright"><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://i.creativecommons.org/p/zero/1.0/80x15.png"></a>
 To the extent possible under law, the editor has waived all copyright and
 related or neighboring rights to this work. In addition, as of
-6 March 2016, the editor has made this specification available
+22 July 2016, the editor has made this specification available
 under the
 <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at
@@ -55,17 +55,14 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
  <li><a href="#conformance"><span class="secno">2 </span>Conformance</a></li>
  <li><a href="#terminology"><span class="secno">3 </span>Terminology</a></li>
  <li><a href="#annex-b"><span class="secno">4 </span>Annex B</a></li>
- <li><a href="#date"><span class="secno">5 </span><code>Date</code></a>
+ <li><a href="#regexp"><span class="secno">5 </span><code>RegExp</code></a>
   <ol>
-   <li><a href="#date.utc"><span class="secno">5.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></a></ol></li>
- <li><a href="#regexp"><span class="secno">6 </span><code>RegExp</code></a>
+   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">5.1 </span>Octal escapes in regular expression literals</a></li>
+   <li><a href="#regexp.$n"><span class="secno">5.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
+   <li><a href="#regexp.lastmatch"><span class="secno">5.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
+ <li><a href="#function"><span class="secno">6 </span><code>Function</code></a>
   <ol>
-   <li><a href="#octal-escapes-in-regular-expression-literals"><span class="secno">6.1 </span>Octal escapes in regular expression literals</a></li>
-   <li><a href="#regexp.$n"><span class="secno">6.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></a></li>
-   <li><a href="#regexp.lastmatch"><span class="secno">6.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></a></ol></li>
- <li><a href="#function"><span class="secno">7 </span><code>Function</code></a>
-  <ol>
-   <li><a href="#function.prototype.tostring()"><span class="secno">7.1 </span><code>Function.prototype.toString()</code></a></ol></li>
+   <li><a href="#function.prototype.tostring()"><span class="secno">6.1 </span><code>Function.prototype.toString()</code></a></ol></li>
  <li><a class="no-num" href="#references">References</a></li>
  <li><a class="no-num" href="#acknowledgments">Acknowledgments</a></ol>
 <!--end-toc-->
@@ -108,44 +105,31 @@ http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 
 <p>JavaScript implementations must fully implement <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-B" title="Annex B">Annex B of the ECMAScript specification</a>.
 
-<h2 id="date"><span class="secno">5 </span><code>Date</code></h2>
-
-<p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/date/">https://mathias.html5.org/tests/javascript/date/</a>.
-
-<h3 id="date.utc"><span class="secno">5.1 </span><code>Date.UTC(<var>year</var>, <var>month</var>, <var>date</var>, <var>hours</var>, <var>minutes</var>, <var>seconds</var>, <var>ms</var>)</code></h3>
-
-<p>When called with fewer than two arguments, <a href="https://tc39.github.io/ecma262/#sec-date.utc"><code class="external" data-anolis-spec="ecmascript">Date.UTC</code></a> must return <code>NaN</code>.
-
-<!--
-https://bugs.ecmascript.org/show_bug.cgi?id=3112
-https://bugzilla.mozilla.org/show_bug.cgi?id=1050755
--->
-
-<h2 id="regexp"><span class="secno">6 </span><code>RegExp</code></h2>
+<h2 id="regexp"><span class="secno">5 </span><code>RegExp</code></h2>
 <!-- http://mxr.mozilla.org/mozilla-central/source/js/src/yarr/YarrParser.h#304 -->
 
-<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">6.1 </span>Octal escapes in regular expression literals</h3>
+<h3 id="octal-escapes-in-regular-expression-literals"><span class="secno">5.1 </span>Octal escapes in regular expression literals</h3>
 
 <p>The <a class="external" data-anolis-spec="ecmascript" href="https://tc39.github.io/ecma262/#sec-additional-syntax-string-literals" title="Octal escape syntax">octal escape sequence syntax for string literals as described in Annex B of the ECMAScript spec</a> must be supported, and must also apply to regular expression literals, even in strict mode code.
 
 <pre class="example">/\123/.test('S'); // true</pre>
 
-<h3 id="regexp.$n"><span class="secno">6.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
+<h3 id="regexp.$n"><span class="secno">5.2 </span><code>RegExp.<var>$1</var>-<var>$9</var></code></h3>
 
 <p>After a regexp is executed the <code>RegExp</code> constructor object has properties <code>$1...$9</code> which are assigned the values of the first 9 match groups from the previous regexp. <!-- TODO: more detail -->
 
-<h3 id="regexp.lastmatch"><span class="secno">6.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
+<h3 id="regexp.lastmatch"><span class="secno">5.3 </span><code>RegExp.lastMatch</code> / <code>RegExp["$&amp;"]</code></h3>
 
 <!-- TODO:
 https://developer.mozilla.org/en/JavaScript/Reference/Deprecated_and_obsolete_features#RegExp_properties
 http://msdn.microsoft.com/en-us/library/bxf43z0b.aspx
 -->
 
-<h2 id="function"><span class="secno">7 </span><code>Function</code></h2>
+<h2 id="function"><span class="secno">6 </span><code>Function</code></h2>
 
 <p class="status">Tests are available: <a href="https://mathias.html5.org/tests/javascript/function/">https://mathias.html5.org/tests/javascript/function/</a>.
 
-<h3 id="function.prototype.tostring()"><span class="secno">7.1 </span><code>Function.prototype.toString()</code></h3>
+<h3 id="function.prototype.tostring()"><span class="secno">6.1 </span><code>Function.prototype.toString()</code></h3>
 
 TODO
 <!-- http://ecma-international.org/ecma-262/6.0/#sec-function.prototype.tostring leaves everything up to the implementation -->
